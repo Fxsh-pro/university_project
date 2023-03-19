@@ -1,4 +1,5 @@
 #include "mytcpserver.h"
+#include "functions.h"
 #include <QDebug>
 #include <QCoreApplication>
 
@@ -47,7 +48,7 @@ void MyTcpServer::slotServerRead(){
     }
     if(array.right(1) == "\n")
     {
-        cTcpSocket->write(array);
+        cTcpSocket->write(parse(array));
     }
 }
 
