@@ -31,24 +31,34 @@ QByteArray show_pass(QString account){
 QByteArray wrong_param(){
     return QByteArray("Неверное количесво параметров\r\n");
 };
+QByteArray invalidRequest(){
+    return "Неверный запрос\r\n";
+}
+
 QByteArray parse(QString message){
-    QStringList parts = message.split("&");
-    if(parts.size() == 3)
-    {
-        if (parts[0] == "log_in")
-            return log_in(parts[1],parts[2]);
-        if (parts[0] == "give_a_role")
-            return give_a_role(parts[1],parts[2]);
-        if (parts[0] == "change_role")
-            return change_role(parts[1],parts[2]);
-        if (parts[0] == "add_user")
-            return add_user(parts[1],parts[2]);
+    QStringList parts = message.left(message.length() - 2).split("&");
+
+    switch(parts.size()){
+        case 1:
+            if(parts[0] == "log_out")
+                return log_out();
+        case 2:
+            if(parts[0] == "show_pass")
+                return show_pass(parts[1]);
+            break;
+        case 3:
+            if (parts[0] == "log_in")
+                return log_in(parts[1],parts[2]);
+            if (parts[0] == "give_a_role")
+                return give_a_role(parts[1],parts[2]);
+            if (parts[0] == "change_role")
+                return change_role(parts[1],parts[2]);
+            if (parts[0] == "add_user")
+                return add_user(parts[1],parts[2]);
+            break;
+        case 4:
+            if (parts[0] == "change_pass")
+                return change_pass(parts[1],parts[2],parts[3]);
     }
-    if(parts[0] == "log_out")
-        return log_out();
-    if(parts[0] == "show_pass" && parts.size() == 2)
-        return show_pass(parts[0]);
     return wrong_param();
-
-
 }

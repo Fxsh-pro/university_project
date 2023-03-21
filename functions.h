@@ -52,7 +52,11 @@ QByteArray show_pass(QString account);
 /// \brief wrong_param возвращает предупреждение, если введено неверное количество параметров
 /// \param QString account
 /// \return QByteArray response
-///
+
+/// \brief invalidRequest возвращает предупреждение, если введён неверный запрос
+/// \param QString account
+/// \return QByteArray response
+QByteArray invalidRequest();
 QByteArray wrong_param();
 ///
 /// \brief parse получает сообщение пользователя и вызывает соответствующую функцию
