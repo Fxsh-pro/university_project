@@ -28,15 +28,13 @@ QByteArray add_user(QString username, QString new_role){
 QByteArray show_pass(QString account){
     return QByteArray("Ваш пароль...\r\n");
 }
-QByteArray wrong_param(){
-    return QByteArray("Неверное количесво параметров\r\n");
-};
 QByteArray invalidRequest(){
-    return "Неверный запрос\r\n";
-}
+    return QByteArray("Неверная команда или неверное количесво параметров.\r\n");
+};
+
 
 QByteArray parse(QString message){
-    QStringList parts = message.left(message.length() - 2).split("&");
+    QStringList parts = message.left(message.length() - 2).split(" ");
 
     switch(parts.size()){
         case 1:
@@ -60,5 +58,5 @@ QByteArray parse(QString message){
             if (parts[0] == "change_pass")
                 return change_pass(parts[1],parts[2],parts[3]);
     }
-    return wrong_param();
+    return invalidRequest();
 }
