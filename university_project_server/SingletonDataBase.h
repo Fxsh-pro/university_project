@@ -119,6 +119,16 @@ class SingletonDataBase
             if(!query.exec())
                 qDebug()<<query.lastError().text();
         }
+        static void changePassword(QString login, QString newPassword)
+        {
+            QSqlQuery query(db);
+            query.prepare("UPDATE User SET password = :newPassword WHERE login = :login");
+            query.bindValue(":newPassword", newPassword);
+            query.bindValue(":login", login);
+
+            if(!query.exec())
+                qDebug()<<query.lastError().text();
+        }
 
 
 
@@ -127,8 +137,8 @@ class SingletonDataBase
                 db.close();
         }
 };
-
 QSqlDatabase SingletonDataBase::db;
 SingletonDataBase* SingletonDataBase::p_instance;
 DatabaseDestroyer SingletonDataBase::destroyer;
+
 #endif // SINGLETONDATABASE_H
