@@ -89,6 +89,16 @@ void  SingletonDataBase::insertUser(QString login, QString password, int positio
         qDebug()<<query.lastError().text();
 }
 
+void SingletonDataBase::changePassword(QString login, QString newPassword){
+    QSqlQuery query(db);
+    query.prepare("UPDATE User SET password = :newPassword WHERE login = :login");
+    query.bindValue(":newPassword", newPassword);
+    query.bindValue(":login", login);
+
+    if(!query.exec())
+        qDebug()<<query.lastError().text();
+}
+
 void SingletonDataBase::close(){
     if(db.isOpen())
         db.close();
