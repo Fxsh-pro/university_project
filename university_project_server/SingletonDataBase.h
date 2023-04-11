@@ -40,8 +40,31 @@ class SingletonDataBase
 
         static void createDB();
 
+<<<<<<< HEAD
         static void insertUser(QString login, QString password, int position_id);
+=======
+            if(!query.exec())
+                qDebug()<<query.lastError().text();
+        }
+        static void changePassword(QString login, QString newPassword)
+        {
+            QSqlQuery query(db);
+            query.prepare("UPDATE User SET password = :newPassword WHERE login = :login");
+            query.bindValue(":newPassword", newPassword);
+            query.bindValue(":login", login);
+
+            if(!query.exec())
+                qDebug()<<query.lastError().text();
+        }
+>>>>>>> 00fcbe729110be670784cfee84bd1f624b5ecd0b
 
         static void close();
 };
+<<<<<<< HEAD
+=======
+QSqlDatabase SingletonDataBase::db;
+SingletonDataBase* SingletonDataBase::p_instance;
+DatabaseDestroyer SingletonDataBase::destroyer;
+
+>>>>>>> 00fcbe729110be670784cfee84bd1f624b5ecd0b
 #endif // SINGLETONDATABASE_H
