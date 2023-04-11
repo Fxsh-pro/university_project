@@ -1,4 +1,5 @@
 #include "functions.h"
+#include "SingletonDataBase.h"
 
 QByteArray log_in(QString username, QString password){
     return QByteArray("Авторизация...\r\n");
@@ -20,9 +21,8 @@ QByteArray change_pass(QString old_pass, QString new_pass1,  QString new_pass2){
     return QByteArray("Пароль изменён\r\n");
 }
 
-QByteArray add_user(QString username, QString new_role){
-//    SingletonDataBase::insertUser("1","1",12);
-//    SingletonDataBase::insertUser("2","2",2);
+QByteArray add_user(QString username, QString pass, int new_role){
+    SingletonDataBase::insertUser(username, pass, new_role);
     return QByteArray("Пользователь добавлен\r\n");
 }
 
@@ -42,7 +42,7 @@ QByteArray parse(QString message){
             if(parts[0] == "log_out")
                 return log_out();
         case 2:
-            if(parts[0] == "show_pass")
+            if(parts[0] == "show_pass" and parts.size() > 1)
                 return show_pass(parts[1]);
             break;
         case 3:
@@ -52,10 +52,11 @@ QByteArray parse(QString message){
                 return give_a_role(parts[1],parts[2]);
             if (parts[0] == "change_role")
                 return change_role(parts[1],parts[2]);
-            if (parts[0] == "add_user")
-                return add_user(parts[1],parts[2]);
             break;
         case 4:
+            if (parts[0] == "add_user") // Парсинг на этой функции не работает, сколько параметоров
+                // Не вводи - все неверно. Как фиксить - одному Аллаху известно
+                return add_user(parts[1],parts[2], parts[3].toInt());
             if (parts[0] == "change_pass")
                 return change_pass(parts[1],parts[2],parts[3]);
     }
