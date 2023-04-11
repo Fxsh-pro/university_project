@@ -23,6 +23,8 @@ class SingletonClient : public QObject
 {
     Q_OBJECT
     private:
+//      int access_level = 0;
+
         static SingletonClient * p_instance;
         static SingletonDestroyer destroyer;
         QTcpSocket * mTcpSocket;
@@ -41,6 +43,5 @@ class SingletonClient : public QObject
        void slotServerRead();
 
 };
-
 
 #endif // SINGLETONCLIENT_H

@@ -26,6 +26,8 @@ void SingletonClient::slotServerRead(){
     while(mTcpSocket->bytesAvailable()>0)
     {
         msg.append(mTcpSocket->readAll());
+        if(msg.right(1) == "\n")
+            break;
     }
     qDebug()<<msg;
 

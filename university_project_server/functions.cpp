@@ -1,6 +1,5 @@
 #include "functions.h"
 
-
 QByteArray log_in(QString username, QString password){
     return QByteArray("Авторизация...\r\n");
 }
@@ -22,6 +21,8 @@ QByteArray change_pass(QString old_pass, QString new_pass1,  QString new_pass2){
 }
 
 QByteArray add_user(QString username, QString new_role){
+//    SingletonDataBase::insertUser("1","1",12);
+//    SingletonDataBase::insertUser("2","2",2);
     return QByteArray("Пользователь добавлен\r\n");
 }
 

@@ -341,6 +341,7 @@ Makefile: ../university_project_server/echoServer.pro ../../QT/6.4.2/mingw_64/mk
 		../university_project_server/echoServer.pro \
 		../../QT/6.4.2/mingw_64/lib/Qt6Gui.prl \
 		../../QT/6.4.2/mingw_64/lib/Qt6Network.prl \
+		../../QT/6.4.2/mingw_64/lib/Qt6Sql.prl \
 		../../QT/6.4.2/mingw_64/lib/Qt6Core.prl \
 		.qmake.stash \
 		../../QT/6.4.2/mingw_64/mkspecs/features/build_pass.prf
@@ -616,6 +617,7 @@ Makefile: ../university_project_server/echoServer.pro ../../QT/6.4.2/mingw_64/mk
 ../university_project_server/echoServer.pro:
 ../../QT/6.4.2/mingw_64/lib/Qt6Gui.prl:
 ../../QT/6.4.2/mingw_64/lib/Qt6Network.prl:
+../../QT/6.4.2/mingw_64/lib/Qt6Sql.prl:
 ../../QT/6.4.2/mingw_64/lib/Qt6Core.prl:
 .qmake.stash:
 ../../QT/6.4.2/mingw_64/mkspecs/features/build_pass.prf:

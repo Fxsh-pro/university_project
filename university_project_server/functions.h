@@ -1,4 +1,3 @@
-#pragma once
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
@@ -6,6 +5,7 @@
 #include <QByteArray>
 #include <QMap>
 #include <QStringList>
+
 /// \brief log_in отвечавет за вход в систему
 /// \param QString username, QString password
 /// \return QByteArray response

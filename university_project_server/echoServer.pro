@@ -1,7 +1,7 @@
 QT += gui
 
 QT += network #Для работы с сетью
-
+QT += sql
 
 CONFIG += c++11 console
 CONFIG -= app_bundle
@@ -28,6 +28,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    SingletonDataBase.h \
     functions.h \
-    mytcpserver.h \
-    serverfunc.h
+    mytcpserver.h
