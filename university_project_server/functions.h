@@ -10,7 +10,7 @@
 /// \param QString username, QString password
 /// \return QByteArray response
 ///
-QByteArray log_in(QString username, QString password);
+QByteArray log_in(QString login, QString password);
 
 /// \brief log_out отвечавет за выход из систему
 /// \param void
@@ -34,13 +34,13 @@ QByteArray change_role(QString username, QString new_role);
 /// \param QString old_pass, QString new_pass1,  QString new_pass2
 /// \return QByteArray response
 ///
-QByteArray change_pass(QString old_pass, QString new_pass1,  QString new_pass2);
+QByteArray change_pass(QString login, QString new_pass1,  QString new_pass2);
 
 /// \brief add_user отвечавет за добавление пользователя
 /// \param QString username, QString new_role
 /// \return QByteArray response
 ///
-QByteArray add_user(QString username, QString new_role);
+QByteArray add_user(QString username, QString pass, int new_role);
 
 /// \brief show_pass отвечавет за показ пароля
 /// \param QString account

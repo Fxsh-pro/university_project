@@ -19,7 +19,7 @@ public slots:
     void slotClientDisconnected();
 
     void slotServerRead();
-    //void slotReadClient();
+//    void slotReadClient();
 private:
     QTcpServer * mTcpServer;
     QVector<QTcpSocket*> mTcpSocket;
