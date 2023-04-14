@@ -18,12 +18,6 @@ QByteArray log_in(QString login, QString password);
 ///
 QByteArray log_out();
 
-/// \brief give_a_role отвечавет за выдачу роли
-/// \param QString username, QString new_role
-/// \return QByteArray response
-///
-QByteArray give_a_role(QString username, QString new_role);
-
 /// \brief change_role отвечавет за изменение роли
 /// \param QString username, QString new_role
 /// \return QByteArray response

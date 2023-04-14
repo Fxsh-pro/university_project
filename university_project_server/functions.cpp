@@ -12,10 +12,6 @@ QByteArray log_out(){
     return QByteArray("Выход...\r\n");
 }
 
-QByteArray give_a_role(QString username, QString new_role){
-    return QByteArray("Роль успешно выдана\r\n");
-}
-
 QByteArray change_role(QString username, QString new_role){
     SingletonDataBase::change_role(username,new_role);
     return QByteArray("Роль успешно изменена\r\n");
@@ -38,7 +34,6 @@ QByteArray add_user(QString username, QString pass, int new_role){
 QByteArray show_pass(QString login,int access_level){
     QString response = SingletonDataBase::show_pass(login,access_level);
     return response.toUtf8();
-    return QByteArray("Ваш пароль...\r\n");
 }
 QByteArray invalidRequest(){
     return QByteArray("Неверная команда или неверное количесво параметров.\r\n");
@@ -52,15 +47,11 @@ QByteArray parse(QString message){
         case 1:
             if(parts[0] == "log_out")
                 return log_out();
-//      case 2:
-//          break;
         case 3:
             if(parts[0] == "show_pass")
                 return show_pass(parts[1],parts[2].toInt());
             if (parts[0] == "log_in")
                 return log_in(parts[1],parts[2]);
-            if (parts[0] == "give_a_role")
-                return give_a_role(parts[1],parts[2]);
             if (parts[0] == "change_role")
                 return change_role(parts[1],parts[2]);
             break;
