@@ -10,7 +10,7 @@ void SingletonDataBase::openDB(){
     }
     qDebug()<<"MyDB()\n";
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("encryptiz.sql");
+    db.setDatabaseName("../university_project_server/encryptiz.sql");
 
     if(!db.open())
         qDebug()<<db.lastError().text();
@@ -63,7 +63,7 @@ void SingletonDataBase::createTables(){
 
 void SingletonDataBase::generate_sevices(){
     QSqlQuery query(db);
-
+/*
     query.prepare("INSERT INTO Services(service_id, access_level, login,password) "
                   " VALUES (:serv_id, :access_level, :login, :password);");
     query.bindValue(":serv_id", 1);
@@ -86,6 +86,15 @@ void SingletonDataBase::generate_sevices(){
     query.bindValue(":serv_name", "google.com");
     if(!query.exec())
         qDebug()<<query.lastError().text();
+
+    query.prepare("INSERT INTO User"
+                  " VALUES (:login, :password, :position_id);");
+    query.bindValue(":login", "12");
+    query.bindValue(":password", "12");
+    query.bindValue(":position_id", "12");
+    if(!query.exec())
+        qDebug()<<query.lastError().text();
+        */
 }
 SingletonDataBase* SingletonDataBase::getInstance(){
     if (!p_instance)

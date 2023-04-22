@@ -2,9 +2,11 @@
 #include "SingletonDataBase.h"
 
 QByteArray log_in(QString login, QString password){
+    qDebug()<<"auth-\r\n";
     bool ok = SingletonDataBase::log_in(login,password);
-    if (ok) return QByteArray("Вы вошли\r\n");
-    return QByteArray("Пользователь не найден\r\n");
+    if (ok) return QByteArray("auth+ " + login.toUtf8()+"\r\n");
+    qDebug()<<"auth--\r\n";
+    return QByteArray("auth-\r\n");
 
 }
 
@@ -41,8 +43,9 @@ QByteArray invalidRequest(){
 
 
 QByteArray parse(QString message){
-    QStringList parts = message.left(message.length() - 2).split(" ");
-
+   // QStringList parts = message.left(message.length() - 2).split(" ");
+     QStringList parts = message.left(message.length()-1).split(" ");
+     qDebug()<<message;
     switch(parts.size()){
         case 1:
             if(parts[0] == "log_out")
