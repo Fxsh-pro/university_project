@@ -26,6 +26,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void slot_on_auth_ok(QString);
+
 private:
     Ui::MainWindow *ui;
     AuthForm *ui_auth;

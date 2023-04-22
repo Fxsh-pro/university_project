@@ -41,8 +41,10 @@ void AuthForm::on_pushButton_reg_clicked()
 
 void AuthForm::on_pushButton_auth_clicked()
 {
-    qDebug() << "auth" << ui->lineEdit_login->text()<<" "<< ui->lineEdit_pass->text();
-    emit closed(ui->lineEdit_login->text());
-    this->close();
+    SingletonClient::getInstance()->send_msg_to_server("log_in "+ui->lineEdit_login->text()+
+                                                       " "+ ui->lineEdit_pass->text()+"\n");
+    qDebug() << "log_in " + ui->lineEdit_login->text()+" "+ ui->lineEdit_pass->text();
+    //emit closed(ui->lineEdit_login->text());
+    //this->close();
 }
 

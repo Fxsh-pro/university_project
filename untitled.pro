@@ -1,4 +1,6 @@
-QT       += core gui
+QT += core
+QT +=gui
+QT += network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -12,12 +14,14 @@ SOURCES += \
     aboutuserform.cpp \
     authform.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    singletonClient.cpp
 
 HEADERS += \
     aboutuserform.h \
     authform.h \
-    mainwindow.h
+    mainwindow.h \
+    singletonClient.h
 
 FORMS += \
     aboutuserform.ui \

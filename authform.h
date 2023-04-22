@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QDebug>
+#include "singletonClient.h"
 namespace Ui {
 class AuthForm;
 }
