@@ -1,9 +1,9 @@
-
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
 #include "authform.h"
+#include <aboutuserform.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,6 +19,7 @@ public:
     ~MainWindow();
 public slots:
     void slot_show(QString log);
+
 private slots:
     void on_pushButton_Test_clicked();
 
@@ -27,10 +28,13 @@ private slots:
     void on_pushButton_clicked();
 
     void slot_on_auth_ok(QString);
+signals:
+    void open_user_info();
 
 private:
     Ui::MainWindow *ui;
     AuthForm *ui_auth;
+    AboutUserForm *ui_user_info;
 };
 
 #endif // MAINWINDOW_H

@@ -48,3 +48,11 @@ void AuthForm::on_pushButton_auth_clicked()
     //this->close();
 }
 
+void AuthForm::keyPressEvent(QKeyEvent *event)
+{
+    if (event->key() == Qt::Key_Enter)
+    {
+        this->on_pushButton_auth_clicked();
+    }
+}
+

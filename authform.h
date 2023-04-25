@@ -4,6 +4,8 @@
 #include <QDialog>
 #include <QDebug>
 #include "singletonClient.h"
+#include <QKeyEvent>
+
 namespace Ui {
 class AuthForm;
 }
@@ -26,6 +28,7 @@ private slots:
 private:
     Ui::AuthForm *ui;
     void change_mode(bool mode);
+    void keyPressEvent(QKeyEvent *event) override;
 signals:
     void closed(QString log);
 };

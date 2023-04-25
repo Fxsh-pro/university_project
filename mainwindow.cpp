@@ -1,4 +1,3 @@
-
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <aboutuserform.h>
@@ -9,11 +8,16 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 {
     ui->setupUi(this);
     ui_auth = new AuthForm;
+    ui_user_info = new AboutUserForm;
    // connect(ui_auth, &AuthForm::closed, this, &MainWindow::slot_show);
     connect(SingletonClient::getInstance(),
             &SingletonClient::auth_ok,
             this,
             &MainWindow::slot_on_auth_ok);
+
+    connect(this, &MainWindow::open_user_info,
+            ui_user_info, &AboutUserForm::show);
+
     ui_auth->show();
 
 }
@@ -21,6 +25,7 @@ void MainWindow::slot_show(QString log)
 {
     this->show();
 }
+
 
 void MainWindow::slot_on_auth_ok(QString log)
 {
@@ -35,20 +40,15 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-
 void MainWindow::on_pushButton_Test_clicked(){}
 
 
-void MainWindow::on_listWidget_currentRowChanged(int currentRow)
-{
-
-}
+void MainWindow::on_listWidget_currentRowChanged(int currentRow){}
 
 
 void MainWindow::on_pushButton_clicked()
 {
-    AboutUserForm* ab_user_form = new AboutUserForm();
-    ab_user_form->show();
+    this->setEnabled(false);
+    emit open_user_info();
 }
 
