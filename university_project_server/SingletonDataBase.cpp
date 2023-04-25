@@ -108,8 +108,8 @@ SingletonDataBase* SingletonDataBase::getInstance(){
 void SingletonDataBase::createDB(){
     SingletonDataBase::getInstance();
     openDB();
-    createTables();
-    insertUser("1","1",1);
+//    createTables();
+//    insertUser("1","1",1);
     generate_sevices();
 }
 
