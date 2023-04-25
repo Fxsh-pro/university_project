@@ -5,6 +5,7 @@
 #include <QClipboard>
 #include <QApplication>
 #include <QTimer>
+#include <QColor>
 
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -14,7 +15,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui_user_info = new AboutUserForm;
 
 
-    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
+    connect(timer1, SIGNAL(timeout()), this, SLOT(update1()));
+    connect(timer2, SIGNAL(timeout()), this, SLOT(update2()));
 
    // connect(ui_auth, &AuthForm::closed, this, &MainWindow::slot_show);
     connect(SingletonClient::getInstance(),
@@ -32,10 +34,15 @@ void MainWindow::slot_show(QString log)
 {
     this->show();
 }
-void MainWindow::update(){
-    ui->pushButton_copy_login->setText("Скопирвоать ");
-    ui->pushButton_copy_password->setText("Скопирвоать ");
+void MainWindow::update1(){
+    ui->pushButton_copy_login->setText("Скопировать ");
+    ui->pushButton_copy_login->setStyleSheet("background-color: ");
 }
+void MainWindow::update2(){
+    ui->pushButton_copy_password->setText("Скопировать ");
+    ui->pushButton_copy_password->setStyleSheet("background-color: ");
+}
+
 
 void MainWindow::slot_on_auth_ok(QString log)
 {
@@ -62,20 +69,30 @@ void MainWindow::on_pushButton_clicked()
     emit open_user_info();
 }
 
+void MainWindow::button_is_pressed(QPushButton * but)
+{
+    QClipboard* clip = QGuiApplication::clipboard();
+    but->setText("Скопировано✅");
+    but->setStyleSheet("background-color:" + QColor(217, 245, 196, 127).name());
+    if (but == ui->pushButton_copy_login)
+    {
+        clip->setText(ui->lineEdit->text());
+        timer1->start(3000);
+    }
+    else if (but == ui->pushButton_copy_password)
+    {
+        clip->setText(ui->lineEdit_2->text());
+        timer2->start(3000);
+    }
+}
 
 void MainWindow::on_pushButton_copy_login_clicked()
 {
-    QClipboard* clip = QGuiApplication::clipboard();
-    clip->setText(ui->lineEdit->text());
-    ui->pushButton_copy_login->setText("Скопировано!");
-    timer->start(3000);
+    this->button_is_pressed(ui->pushButton_copy_login);
 }
 
 void MainWindow::on_pushButton_copy_password_clicked()
 {
-    QClipboard* clip = QGuiApplication::clipboard();
-    clip->setText(ui->lineEdit_2->text());
-    ui->pushButton_copy_password->setText("Скопировано!");
-    timer->start(3000);
+    this->button_is_pressed(ui->pushButton_copy_password);
 }
 
