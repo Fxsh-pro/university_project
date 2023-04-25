@@ -6,6 +6,8 @@
 #include "singletonClient.h"
 #include <QKeyEvent>
 
+
+
 namespace Ui {
 class AuthForm;
 }

@@ -50,15 +50,15 @@ void AuthForm::on_pushButton_auth_clicked()
 
 void AuthForm::keyPressEvent(QKeyEvent *event)
 {
-    if (event->key() == 16777220)
+    if (event->key() == (int)Qt::Key_Return)
     {
         this->on_pushButton_auth_clicked();
     }
-    if (event->key() == 16777237)
+    if (event->key() == (int)Qt::Key_Down)
     {
         ui->lineEdit_pass->setFocus();
     }
-    if (event->key() == 16777235)
+    if (event->key() == (int)Qt::Key_Up)
     {
         ui->lineEdit_login->setFocus();
     }
