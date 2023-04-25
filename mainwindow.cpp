@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include <aboutuserform.h>
 #include "singletonClient.h"
+#include <QClipboard>
+#include <QApplication>
 
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -50,5 +52,18 @@ void MainWindow::on_pushButton_clicked()
 {
     this->setEnabled(false);
     emit open_user_info();
+}
+
+
+void MainWindow::on_pushButton_copy_login_clicked()
+{
+    QClipboard* clip = QGuiApplication::clipboard();
+    clip->setText(ui->lineEdit->text());
+}
+
+void MainWindow::on_pushButton_copy_password_clicked()
+{
+    QClipboard* clip = QGuiApplication::clipboard();
+    clip->setText(ui->lineEdit_2->text());
 }
 

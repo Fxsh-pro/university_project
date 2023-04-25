@@ -28,6 +28,10 @@ private slots:
     void on_pushButton_clicked();
 
     void slot_on_auth_ok(QString);
+    void on_pushButton_copy_login_clicked();
+
+    void on_pushButton_copy_password_clicked();
+
 signals:
     void open_user_info();
 

@@ -1,5 +1,5 @@
 QT += core
-QT +=gui
+QT +=gui widgets
 QT += network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
