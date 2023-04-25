@@ -28,6 +28,7 @@ private slots:
 private:
     Ui::AuthForm *ui;
     void change_mode(bool mode);
+
     void keyPressEvent(QKeyEvent *event) override;
 signals:
     void closed(QString log);
