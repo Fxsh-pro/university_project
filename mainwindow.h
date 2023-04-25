@@ -17,10 +17,12 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    QTimer * timer = new QTimer(this);
 public slots:
     void slot_show(QString log);
 
 private slots:
+    void update();
     void on_pushButton_Test_clicked();
 
     void on_listWidget_currentRowChanged(int currentRow);

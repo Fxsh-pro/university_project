@@ -4,6 +4,7 @@
 #include "singletonClient.h"
 #include <QClipboard>
 #include <QApplication>
+#include <QTimer>
 
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -11,6 +12,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->setupUi(this);
     ui_auth = new AuthForm;
     ui_user_info = new AboutUserForm;
+
+
+    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
+
    // connect(ui_auth, &AuthForm::closed, this, &MainWindow::slot_show);
     connect(SingletonClient::getInstance(),
             &SingletonClient::auth_ok,
@@ -27,7 +32,10 @@ void MainWindow::slot_show(QString log)
 {
     this->show();
 }
-
+void MainWindow::update(){
+    ui->pushButton_copy_login->setText("Скопирвоать ");
+    ui->pushButton_copy_password->setText("Скопирвоать ");
+}
 
 void MainWindow::slot_on_auth_ok(QString log)
 {
@@ -59,11 +67,15 @@ void MainWindow::on_pushButton_copy_login_clicked()
 {
     QClipboard* clip = QGuiApplication::clipboard();
     clip->setText(ui->lineEdit->text());
+    ui->pushButton_copy_login->setText("Скопировано!");
+    timer->start(3000);
 }
 
 void MainWindow::on_pushButton_copy_password_clicked()
 {
     QClipboard* clip = QGuiApplication::clipboard();
     clip->setText(ui->lineEdit_2->text());
+    ui->pushButton_copy_password->setText("Скопировано!");
+    timer->start(3000);
 }
 
