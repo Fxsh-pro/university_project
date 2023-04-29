@@ -109,6 +109,18 @@
       </property>
      </widget>
     </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_exit">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Выйти</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
  </widget>

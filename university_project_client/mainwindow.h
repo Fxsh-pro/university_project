@@ -41,6 +41,8 @@ private slots:
 
     void on_pushButton_user_info_clicked();
 
+    void user_exit();
+
 signals:
     void open_user_info();
 

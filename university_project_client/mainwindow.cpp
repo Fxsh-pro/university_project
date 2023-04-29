@@ -17,6 +17,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     connect(timer1, SIGNAL(timeout()), this, SLOT(update1()));
     connect(timer2, SIGNAL(timeout()), this, SLOT(update2()));
+    connect(ui_user_info, &AboutUserForm::user_exit_press,
+            this, &MainWindow::user_exit);
 
    // connect(ui_auth, &AuthForm::closed, this, &MainWindow::slot_show);
     connect(SingletonClient::getInstance(),
@@ -103,6 +105,12 @@ void MainWindow::on_pushButton_copy_password_clicked()
 
 void MainWindow::on_pushButton_user_info_clicked()
 {
+    ui_user_info->setModal(true);
     ui_user_info->show();
 }
 
+void MainWindow::user_exit()
+{
+    this->close();
+    ui_auth->show();
+}

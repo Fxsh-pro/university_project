@@ -2,21 +2,27 @@
 #define ABOUTUSERFORM_H
 
 #include <QWidget>
+#include <QDialog>
 
 namespace Ui {
 class AboutUserForm;
 }
 
-class AboutUserForm : public QWidget
+class AboutUserForm : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit AboutUserForm(QWidget *parent = nullptr);
+    explicit AboutUserForm(QDialog *parent = nullptr);
     ~AboutUserForm();
 
 private slots:
     void on_pushButton_2_clicked();
+
+    void on_pushButton_exit_clicked();
+
+signals:
+    void user_exit_press();
 
 private:
     Ui::AboutUserForm *ui;

@@ -3,8 +3,8 @@
 #include <authform.h>
 #include <mainwindow.h>
 
-AboutUserForm::AboutUserForm(QWidget *parent) :
-    QWidget(parent),
+AboutUserForm::AboutUserForm(QDialog *parent) :
+    QDialog(parent),
     ui(new Ui::AboutUserForm)
 {
     ui->setupUi(this);
@@ -17,8 +17,11 @@ AboutUserForm::~AboutUserForm()
 
 void AboutUserForm::on_pushButton_2_clicked()
 {
-    AuthForm* auth_form = new AuthForm();
-    this->close();
-    auth_form->show();
+    // Создание метода было ошибкой
 }
 
+void AboutUserForm::on_pushButton_exit_clicked()
+{
+    this->close();
+    emit user_exit_press();
+}
