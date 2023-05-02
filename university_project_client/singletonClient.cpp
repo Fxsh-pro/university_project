@@ -30,7 +30,7 @@ void SingletonClient::slotServerRead(){
             break;
     }
     qDebug()<<msg;
-QStringList answer = msg.split(" ");
+    QStringList answer = msg.split(" ");
     //emit message_from_server(msg);
     if(answer[0] == "auth+")
         emit auth_ok(answer[1]);

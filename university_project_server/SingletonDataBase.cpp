@@ -178,6 +178,11 @@ QString SingletonDataBase::show_pass(QString service_name, int access_level){
     return query.value(0).toString();
 
 }
+
+QString SingletonDataBase::get_level_access(QString login)
+{
+
+}
 void SingletonDataBase::close(){
     if(db.isOpen())
         db.close();

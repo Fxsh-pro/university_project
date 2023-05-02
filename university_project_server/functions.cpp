@@ -47,7 +47,7 @@ QByteArray invalidRequest(){
 
 
 QByteArray parse(QString message){
-   // QStringList parts = message.left(message.length() - 2).split(" ");
+    // QStringList parts = message.left(message.length() - 2).split(" ");
      QStringList parts = message.left(message.length()-1).split(" ");
      qDebug()<<message;
     switch(parts.size()){
