@@ -5,6 +5,7 @@
 #include <QByteArray>
 #include <QMap>
 #include <QStringList>
+#include "md5.h"
 
 /// \brief log_in отвечавет за вход в систему
 /// \param QString username, QString password

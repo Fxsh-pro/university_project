@@ -2,10 +2,14 @@
 #include "SingletonDataBase.h"
 
 QByteArray log_in(QString login, QString password){
-    qDebug()<<"auth-\r\n";
-    bool ok = SingletonDataBase::log_in(login,password);
+    MD5* hash = new MD5();
+//    qDebug()<<password;
+//    qDebug()<<QString::fromStdString(hash->get_hash(password.toStdString()))<<"_-_";
+//    qDebug()<<QString::fromStdString(hash->get_hash(password.toStdString()));
+
+    bool ok = SingletonDataBase::log_in(login,QString::fromStdString(hash->get_hash(password.toStdString())));
     if (ok) return QByteArray("auth+ " + login.toUtf8()+"\r\n");
-    qDebug()<<"auth--\r\n";
+
     return QByteArray("auth-\r\n");
 
 }

@@ -22,7 +22,7 @@ void SingletonDataBase::createTables(){
     query.exec("CREATE TABLE IF NOT EXISTS User("
                "user_id INTEGER PRIMARY KEY AUTOINCREMENT,"
                "login VARCHAR(30) NOT NULL,"
-               "password VARCHAR(30) NOT NULL,"
+               "password VARCHAR(32) NOT NULL,"
                "position_id int"
                ")");
 
@@ -110,7 +110,7 @@ void SingletonDataBase::createDB(){
     openDB();
 //    createTables();
 //    insertUser("1","1",1);
-    generate_sevices();
+//    generate_sevices();
 }
 
 void  SingletonDataBase::insertUser(QString login, QString password, int position_id){
@@ -146,6 +146,7 @@ void SingletonDataBase::change_role(QString login, QString new_role){
 
 bool SingletonDataBase::log_in(QString login, QString password){
     QSqlQuery query(db);
+//    qDebug()<<password<<"-_-";
     query.prepare("SELECT COUNT(*) FROM User WHERE login = :login AND password = :password");
     query.bindValue(":login", login);
     query.bindValue(":password", password);

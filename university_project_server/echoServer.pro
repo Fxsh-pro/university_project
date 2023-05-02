@@ -21,6 +21,7 @@ SOURCES += \
     SingletonDataBase.cpp \
     functions.cpp \
         main.cpp \
+    md5.cpp \
     mytcpserver.cpp
 
 # Default rules for deployment.
@@ -31,4 +32,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     SingletonDataBase.h \
     functions.h \
+    md5.h \
     mytcpserver.h
