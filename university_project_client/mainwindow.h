@@ -43,6 +43,8 @@ private slots:
 
     void user_exit();
 
+    void prepare_window_for_user();
+
 signals:
     void open_user_info();
 
@@ -50,6 +52,8 @@ private:
     Ui::MainWindow *ui;
     AuthForm *ui_auth;
     AboutUserForm *ui_user_info;
+
+    QJsonObject user_data;
 };
 
 #endif // MAINWINDOW_H

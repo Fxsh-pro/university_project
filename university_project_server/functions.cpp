@@ -9,7 +9,9 @@ QByteArray log_in(QString login, QString password){
 
     bool ok = SingletonDataBase::log_in(login,QString::fromStdString(hash->get_hash(password.toStdString())));
     if (ok) {
-        return QByteArray("auth+ " + login.toUtf8()+"\r\n");
+        QJsonDocument data(SingletonDataBase::send_user_data(login));
+        QString result_data = data.toJson();
+        return QByteArray("auth+&" + result_data.toUtf8()+"\r\n");
     }
 
     return QByteArray("auth-\r\n");

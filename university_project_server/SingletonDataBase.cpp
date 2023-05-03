@@ -189,18 +189,20 @@ QJsonObject SingletonDataBase::send_user_data(QString login)
     query.prepare("SELECT position_name FROM USER "
                "JOIN Position ON user.position_id = position.position_id WHERE login = :login");
     query.bindValue(":login", login);
-    query.exec();
+    if (!query.exec() || !query.next()) qDebug() << query.lastError().text();
 
     user_data["Login"] = login;
     user_data["Position"] = query.value(0).toString();
 
     query.prepare("SELECT service_name, login, password FROM Services "
-               "JOIN Services_name ON services.service_id = Services_name.service_id"
+               "JOIN Services_name ON services.service_id = Services_name.service_id "
                "WHERE access_level IN (SELECT access_level FROM position "
-               "JOIN access_position ON position.position_id = access_position.position_id"
+               "JOIN access_position ON position.position_id = access_position.position_id "
                "WHERE position.position_id = (SELECT position_id FROM USER WHERE login = :login))");
     query.bindValue(":login", login);
-    query.exec();
+
+    if (!query.exec()) qDebug() << query.lastError().text();
+
     while (query.next())
     {
         QJsonObject service;

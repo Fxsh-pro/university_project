@@ -6,6 +6,9 @@
 #include <QApplication>
 #include <QTimer>
 #include <QColor>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QJsonDocument>
 
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -13,7 +16,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->setupUi(this);
     ui_auth = new AuthForm;
     ui_user_info = new AboutUserForm;
-
 
     connect(timer1, SIGNAL(timeout()), this, SLOT(update1()));
     connect(timer2, SIGNAL(timeout()), this, SLOT(update2()));
@@ -45,12 +47,28 @@ void MainWindow::update2(){
     ui->pushButton_copy_password->setStyleSheet("background-color: ");
 }
 
+void MainWindow::prepare_window_for_user()
+{
+    ui->pushButton_user_info->setText(user_data["Login"].toString());
+    ui->label_access_level->setText("Уровень доступа: " + user_data["Position"].toString());
 
-void MainWindow::slot_on_auth_ok(QString log)
+    QJsonArray ServicesArr = user_data["Services"].toArray();
+    for (const QJsonValue& value : ServicesArr)
+    {
+        QJsonObject object = value.toObject();
+        QListWidgetItem* NewService = new QListWidgetItem(object["name"].toString());
+        ui->listWidget_services->addItem(NewService);
+    }
+    ui->frame_2->hide();
+}
+
+void MainWindow::slot_on_auth_ok(QString user_data)
 {
     ui_auth->close();
     this->show();
-    ui->pushButton_user_info->setText(log);
+    QJsonDocument doc = QJsonDocument::fromJson(user_data.toUtf8());
+    this->user_data = doc.object();
+    this->prepare_window_for_user();
 }
 
 
