@@ -179,10 +179,43 @@ QString SingletonDataBase::show_pass(QString service_name, int access_level){
 
 }
 
-QString SingletonDataBase::get_level_access(QString login)
+QJsonObject SingletonDataBase::send_user_data(QString login)
 {
+    QJsonObject user_data;
+    QJsonArray Services;
 
+    QSqlQuery query(db);
+
+    query.prepare("SELECT position_name FROM USER "
+               "JOIN Position ON user.position_id = position.position_id WHERE login = :login");
+    query.bindValue(":login", login);
+    query.exec();
+
+    user_data["Login"] = login;
+    user_data["Position"] = query.value(0).toString();
+
+    query.prepare("SELECT service_name, login, password FROM Services "
+               "JOIN Services_name ON services.service_id = Services_name.service_id"
+               "WHERE access_level IN (SELECT access_level FROM position "
+               "JOIN access_position ON position.position_id = access_position.position_id"
+               "WHERE position.position_id = (SELECT position_id FROM USER WHERE login = :login))");
+    query.bindValue(":login", login);
+    query.exec();
+    while (query.next())
+    {
+        QJsonObject service;
+        service["name"] = query.value(0).toString();
+        service["login"] = query.value(1).toString();
+        service["password"] = query.value(2).toString();
+
+        Services.append(service);
+    }
+
+    user_data["Services"] = Services;
+
+    return user_data;
 }
+
 void SingletonDataBase::close(){
     if(db.isOpen())
         db.close();

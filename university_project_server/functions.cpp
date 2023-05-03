@@ -8,10 +8,11 @@ QByteArray log_in(QString login, QString password){
 //    qDebug()<<QString::fromStdString(hash->get_hash(password.toStdString()));
 
     bool ok = SingletonDataBase::log_in(login,QString::fromStdString(hash->get_hash(password.toStdString())));
-    if (ok) return QByteArray("auth+ " + login.toUtf8()+"\r\n");
+    if (ok) {
+        return QByteArray("auth+ " + login.toUtf8()+"\r\n");
+    }
 
     return QByteArray("auth-\r\n");
-
 }
 
 QByteArray log_out(){

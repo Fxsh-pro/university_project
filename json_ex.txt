@@ -1,0 +1,16 @@
+{
+	"login" : "SomeUserName",
+	"position": "SuperPosition",
+	"Services" : [
+		"Service1"{
+			"name": "ServiceName",
+			"login": "SomeServiceLogin",
+			"password" : "SomeServicePassword"
+		},
+		"Service2"{
+			"name": "AnotherServiceName",
+			"login" : "AnotherServiceLogin",
+			"password": "AnotherServicePassword"
+		}
+	]
+}

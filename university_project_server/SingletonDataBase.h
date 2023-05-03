@@ -8,6 +8,10 @@
 #include <QSqlRecord>
 #include <QSqlDatabase>
 #include <QString>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonDocument>
+
 class SingletonDataBase;
 
 class DatabaseDestroyer
@@ -68,6 +72,8 @@ class SingletonDataBase
         /// \param QString service_name, int access_level
         /// \return QString
         static QString show_pass(QString service_name, int access_level);
+
+        static QJsonObject send_user_data(QString login);
 
         /// \brief close закрывает базу данных
         /// \param void
