@@ -132,3 +132,25 @@ void MainWindow::user_exit()
     this->close();
     ui_auth->show();
 }
+
+void MainWindow::on_listWidget_services_itemClicked(QListWidgetItem *item)
+{
+    if (ui->frame_2->isHidden())
+    {
+        ui->frame_2->show();
+    }
+
+    QJsonArray ServicesArr = user_data["Services"].toArray();
+    for (const QJsonValue& value : ServicesArr)
+    {
+        QJsonObject object = value.toObject();
+        if (item->text() == object["name"].toString())
+        {
+            ui->lineEdit_service_login->setText(object["login"].toString());
+            ui->lineEdit_service_password->setText(object["password"].toString());
+            break;
+        }
+    }
+
+}
+

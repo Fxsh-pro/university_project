@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "authform.h"
 #include <aboutuserform.h>
+#include <QListWidget>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -44,6 +45,8 @@ private slots:
     void user_exit();
 
     void prepare_window_for_user();
+
+    void on_listWidget_services_itemClicked(QListWidgetItem *item);
 
 signals:
     void open_user_info();
