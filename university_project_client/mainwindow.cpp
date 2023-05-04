@@ -130,6 +130,7 @@ void MainWindow::on_pushButton_user_info_clicked()
 void MainWindow::user_exit()
 {
     this->close();
+    ui->listWidget_services->clear();
     ui_auth->show();
 }
 
