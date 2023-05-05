@@ -39,18 +39,18 @@ void MainWindow::slot_show(QString log)
     this->show();
 }
 void MainWindow::update1(){
-    ui->pushButton_copy_login->setText("Скопировать ");
-    ui->pushButton_copy_login->setStyleSheet("background-color: ");
+    ui->pushButton_copy_login->setText("Скопировать");
+    ui->pushButton_copy_login->setStyleSheet("background-color: rgba(255, 255, 255, 200);");
 }
 void MainWindow::update2(){
-    ui->pushButton_copy_password->setText("Скопировать ");
-    ui->pushButton_copy_password->setStyleSheet("background-color: ");
+    ui->pushButton_copy_password->setText("Скопировать");
+    ui->pushButton_copy_password->setStyleSheet("background-color: rgba(255, 255, 255, 200);");
 }
 
 void MainWindow::prepare_window_for_user()
 {
     ui->pushButton_user_info->setText(user_data["Login"].toString());
-    ui->label_access_level->setText("Уровень доступа: " + user_data["Position"].toString());
+    ui->label_acces_level_val->setText(user_data["Position"].toString());
 
     QJsonArray ServicesArr = user_data["Services"].toArray();
     for (const QJsonValue& value : ServicesArr)
@@ -59,7 +59,7 @@ void MainWindow::prepare_window_for_user()
         QListWidgetItem* NewService = new QListWidgetItem(object["name"].toString());
         ui->listWidget_services->addItem(NewService);
     }
-    ui->frame_2->hide();
+    ui->frame_3->hide();
 }
 
 void MainWindow::slot_on_auth_ok(QString user_data)
@@ -97,7 +97,7 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::button_is_pressed(QPushButton * but)
 {
     QClipboard* clip = QGuiApplication::clipboard();
-    but->setText("Скопировано✅");
+    but->setText("Скопировано");
     but->setStyleSheet("background-color:" + QColor(217, 245, 196, 127).name());
     if (but == ui->pushButton_copy_login)
     {
@@ -136,9 +136,9 @@ void MainWindow::user_exit()
 
 void MainWindow::on_listWidget_services_itemClicked(QListWidgetItem *item)
 {
-    if (ui->frame_2->isHidden())
+    if (ui->frame_3->isHidden())
     {
-        ui->frame_2->show();
+        ui->frame_3->show();
     }
 
     QJsonArray ServicesArr = user_data["Services"].toArray();
@@ -147,8 +147,8 @@ void MainWindow::on_listWidget_services_itemClicked(QListWidgetItem *item)
         QJsonObject object = value.toObject();
         if (item->text() == object["name"].toString())
         {
-            ui->lineEdit_service_login->setText(object["login"].toString());
-            ui->lineEdit_service_password->setText(object["password"].toString());
+            ui->lineEdit_service_login->setText("  " + object["login"].toString());
+            ui->lineEdit_service_password->setText("  " + object["password"].toString());
             break;
         }
     }

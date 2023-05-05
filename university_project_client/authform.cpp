@@ -56,11 +56,25 @@ void AuthForm::keyPressEvent(QKeyEvent *event)
     }
     if (event->key() == (int)Qt::Key_Down)
     {
-        ui->lineEdit_pass->setFocus();
+        if (ui->lineEdit_login->hasFocus()) {
+            ui->lineEdit_pass->setFocus();
+        }
+        else if (ui->lineEdit_mail->hasFocus()) {
+            ui->lineEdit_login->setFocus();
+        }
+        else if (ui->lineEdit_pass->hasFocus()) {
+            ui->pushButton_auth->setFocus();
+            ui->pushButton_reg->setFocus();
+        }
     }
     if (event->key() == (int)Qt::Key_Up)
     {
-        ui->lineEdit_login->setFocus();
+        if (ui->lineEdit_login->hasFocus() && ui->lineEdit_mail->isVisible()) {
+            ui->lineEdit_mail->setFocus();
+        }
+        else if (ui->lineEdit_pass->hasFocus()) {
+            ui->lineEdit_login->setFocus();
+        }
     }
 
 }
