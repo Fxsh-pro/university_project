@@ -196,7 +196,7 @@ border-radius: 10px;</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
-           <widget class="QLineEdit" name="lineEdit">
+           <widget class="QLineEdit" name="lineEdit_services_search">
             <property name="minimumSize">
              <size>
               <width>250</width>
@@ -221,10 +221,13 @@ border: 3px solid rgba(236, 218, 204, 90);
 border-radius: 10px;</string>
             </property>
             <property name="text">
-             <string>Поиск</string>
+             <string/>
             </property>
             <property name="alignment">
              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>Поиск...</string>
             </property>
            </widget>
           </item>

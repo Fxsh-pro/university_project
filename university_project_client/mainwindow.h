@@ -48,8 +48,12 @@ private slots:
 
     void on_listWidget_services_itemClicked(QListWidgetItem *item);
 
+    void on_lineEdit_services_search_textEdited(const QString &arg1);
+
 signals:
     void open_user_info();
+
+    void about_user_info_send(QString, QString);
 
 private:
     Ui::MainWindow *ui;

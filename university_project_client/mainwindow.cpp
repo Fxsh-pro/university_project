@@ -21,6 +21,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(timer2, SIGNAL(timeout()), this, SLOT(update2()));
     connect(ui_user_info, &AboutUserForm::user_exit_press,
             this, &MainWindow::user_exit);
+    connect(this, &MainWindow::about_user_info_send,
+            ui_user_info, &AboutUserForm::set_user_data_info);
 
    // connect(ui_auth, &AuthForm::closed, this, &MainWindow::slot_show);
     connect(SingletonClient::getInstance(),
@@ -60,6 +62,7 @@ void MainWindow::prepare_window_for_user()
         ui->listWidget_services->addItem(NewService);
     }
     ui->frame_3->hide();
+    emit about_user_info_send(user_data["Login"].toString(), user_data["Position"].toString());
 }
 
 void MainWindow::slot_on_auth_ok(QString user_data)
@@ -153,5 +156,16 @@ void MainWindow::on_listWidget_services_itemClicked(QListWidgetItem *item)
         }
     }
 
+}
+
+
+void MainWindow::on_lineEdit_services_search_textEdited(const QString &arg)
+{
+    for (int i = 0; i < ui->listWidget_services->count(); i++)
+    {
+        QListWidgetItem* item = ui->listWidget_services->item(i);
+        if (!(item->text().toUpper().contains(arg.toUpper()))) item->setHidden(true);
+        else item->setHidden(false);
+    }
 }
 

@@ -187,7 +187,7 @@ border: none</string>
         </widget>
        </item>
        <item>
-        <widget class="QListWidget" name="listWidget">
+        <widget class="QListWidget" name="listWidget_services">
          <property name="styleSheet">
           <string notr="true">background-color: white;
 border: 3px solid rgba(236, 218, 204, 90);
@@ -212,7 +212,7 @@ border-radius: 10px;</string>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="pushButton_change_pass">
          <property name="minimumSize">
           <size>
            <width>0</width>
