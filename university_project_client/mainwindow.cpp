@@ -150,8 +150,8 @@ void MainWindow::on_listWidget_services_itemClicked(QListWidgetItem *item)
         QJsonObject object = value.toObject();
         if (item->text() == object["name"].toString())
         {
-            ui->lineEdit_service_login->setText("  " + object["login"].toString());
-            ui->lineEdit_service_password->setText("  " + object["password"].toString());
+            ui->lineEdit_service_login->setText(object["login"].toString());
+            ui->lineEdit_service_password->setText(object["password"].toString());
             break;
         }
     }
