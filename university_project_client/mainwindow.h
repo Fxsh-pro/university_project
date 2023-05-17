@@ -5,6 +5,7 @@
 #include "authform.h"
 #include <aboutuserform.h>
 #include <QListWidget>
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -36,6 +37,8 @@ private slots:
     void on_pushButton_clicked();
 
     void slot_on_auth_ok(QString);
+    void slot_on_auth_invalid();
+
     void on_pushButton_copy_login_clicked();
 
     void on_pushButton_copy_password_clicked();

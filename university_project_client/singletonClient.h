@@ -43,6 +43,8 @@ class SingletonClient : public QObject
        void slotServerRead();
 signals:
        void auth_ok(QString);
+       void auth_invalid();
+       void change_pass_ok();
 };
 
 #endif // SINGLETONCLIENT_H

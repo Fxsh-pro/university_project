@@ -29,6 +29,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
             &SingletonClient::auth_ok,
             this,
             &MainWindow::slot_on_auth_ok);
+    connect(SingletonClient::getInstance(),
+            &SingletonClient::auth_invalid,
+            this,
+            &MainWindow::slot_on_auth_invalid);
 
     connect(this, &MainWindow::open_user_info,
             ui_user_info, &AboutUserForm::show);
@@ -72,6 +76,11 @@ void MainWindow::slot_on_auth_ok(QString user_data)
     QJsonDocument doc = QJsonDocument::fromJson(user_data.toUtf8());
     this->user_data = doc.object();
     this->prepare_window_for_user();
+}
+
+void MainWindow::slot_on_auth_invalid()
+{
+    QMessageBox::warning(nullptr, "Ошибка", "Были введены неверные данные.");
 }
 
 

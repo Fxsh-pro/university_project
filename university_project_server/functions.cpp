@@ -2,12 +2,12 @@
 #include "SingletonDataBase.h"
 
 QByteArray log_in(QString login, QString password){
-    MD5* hash = new MD5();
+    MD5 hash;
 //    qDebug()<<password;
 //    qDebug()<<QString::fromStdString(hash->get_hash(password.toStdString()))<<"_-_";
 //    qDebug()<<QString::fromStdString(hash->get_hash(password.toStdString()));
 
-    bool ok = SingletonDataBase::log_in(login,QString::fromStdString(hash->get_hash(password.toStdString())));
+    bool ok = SingletonDataBase::log_in(login,QString::fromStdString(hash.get_hash(password.toStdString())));
     if (ok) {
         QJsonDocument data(SingletonDataBase::send_user_data(login));
         QString result_data = data.toJson();
@@ -26,12 +26,11 @@ QByteArray change_role(QString username, QString new_role){
     return QByteArray("Роль успешно изменена\r\n");
 }
 
-QByteArray change_pass(QString login, QString new_pass1,  QString new_pass2){
-    if(new_pass1 == new_pass2 ){
-        SingletonDataBase::changePassword(login, new_pass1);
-        return QByteArray("Пароль изменён\r\n");
-    }
-    return QByteArray("Пароли не совпадают\r\n");
+QByteArray change_pass(QString login, QString new_pass){
+    MD5 hash;
+    QString new_pass_hash = QString::fromStdString(hash.get_hash(new_pass.toStdString()));
+    SingletonDataBase::changePassword(login, new_pass_hash);
+    return QByteArray("change_pass+\r\n");
 
 }
 
@@ -51,12 +50,12 @@ QByteArray invalidRequest(){
 
 QByteArray parse(QString message){
     // QStringList parts = message.left(message.length() - 2).split(" ");
-     QStringList parts = message.left(message.length()-1).split(" ");
-     qDebug()<<message;
+    QStringList parts = message.left(message.length()-1).split(" ");
     switch(parts.size()){
         case 1:
             if(parts[0] == "log_out")
                 return log_out();
+            break;
         case 3:
             if(parts[0] == "show_pass")
                 return show_pass(parts[1],parts[2].toInt());
@@ -64,12 +63,12 @@ QByteArray parse(QString message){
                 return log_in(parts[1],parts[2]);
             if (parts[0] == "change_role")
                 return change_role(parts[1],parts[2]);
+            if (parts[0] == "change_pass")
+                return change_pass(parts[1],parts[2]);
             break;
         case 4:
             if (parts[0] == "add_user")
                 return add_user(parts[1],parts[2], parts[3].toInt());
-            if (parts[0] == "change_pass")
-                return change_pass(parts[1],parts[2],parts[3]);
     }
     return invalidRequest();
 }

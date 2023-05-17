@@ -29,7 +29,7 @@ QByteArray change_role(QString username, QString new_role);
 /// \param QString old_pass, QString new_pass1,  QString new_pass2
 /// \return QByteArray response
 ///
-QByteArray change_pass(QString login, QString new_pass1,  QString new_pass2);
+QByteArray change_pass(QString login, QString new_pass);
 
 /// \brief add_user отвечавет за добавление пользователя
 /// \param QString username, QString new_role

@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QDialog>
+#include "change_pass_form.h"
 
 namespace Ui {
 class AboutUserForm;
@@ -23,11 +24,16 @@ private slots:
 
     void set_user_data_info(QString name, QString access_level);
 
+    void on_pushButton_change_pass_clicked();
+
 signals:
     void user_exit_press();
 
+    void change_pass_press(QString user_login);
+
 private:
     Ui::AboutUserForm *ui;
+    change_pass_form *ui_change_pass;
 
     friend class MainWindow;
 };

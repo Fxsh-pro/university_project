@@ -33,8 +33,10 @@ void MyTcpServer::slotNewConnection(){
         QTcpSocket* cTcpSocket;
         cTcpSocket = mTcpServer->nextPendingConnection();
         cTcpSocket->write("Hello, World!!! I am echo server!\r\n");
-        connect(cTcpSocket, &QTcpSocket::readyRead, this,&MyTcpServer::slotServerRead);
-        connect(cTcpSocket,&QTcpSocket::disconnected, this,&MyTcpServer::slotClientDisconnected);
+        connect(cTcpSocket, &QTcpSocket::readyRead,
+                this,&MyTcpServer::slotServerRead);
+        connect(cTcpSocket,&QTcpSocket::disconnected,
+                this,&MyTcpServer::slotClientDisconnected);
         mTcpSocket.push_back(cTcpSocket);
     }
 }

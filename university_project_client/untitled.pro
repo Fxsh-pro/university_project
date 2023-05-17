@@ -13,6 +13,7 @@ CONFIG += c++17
 SOURCES += \
     aboutuserform.cpp \
     authform.cpp \
+    change_pass_form.cpp \
     main.cpp \
     mainwindow.cpp \
     singletonClient.cpp
@@ -20,12 +21,14 @@ SOURCES += \
 HEADERS += \
     aboutuserform.h \
     authform.h \
+    change_pass_form.h \
     mainwindow.h \
     singletonClient.h
 
 FORMS += \
     aboutuserform.ui \
     authform.ui \
+    change_pass_form.ui \
     mainwindow.ui
 
 # Default rules for deployment.
