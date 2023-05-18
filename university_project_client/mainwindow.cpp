@@ -89,23 +89,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_pushButton_Test_clicked()
-{
-    // Создание этой процедуры было ошибкой
-}
-
-
-void MainWindow::on_listWidget_currentRowChanged(int currentRow)
-{
-    // Не трогать, взорвется
-}
-
-
-void MainWindow::on_pushButton_clicked()
-{
-    // Не трогать, все взорвется
-}
-
 void MainWindow::button_is_pressed(QPushButton * but)
 {
     QClipboard* clip = QGuiApplication::clipboard();

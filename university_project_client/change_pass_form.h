@@ -32,9 +32,17 @@ private slots:
 
     void on_cancel_pushbutton_clicked();
 
+    void on_pushButton_clicked();
+
+    void on_pushButton_set_visible_pass_2_clicked();
+
+    void on_pushButton_set_visible_pass_clicked();
+
 private:
     Ui::change_pass_form *ui;
     QString user_login;
+    bool echo_1_pass_mode;
+    bool echo_2_pass_mode;
 };
 
 #endif // CHANGE_PASS_FORM_H
