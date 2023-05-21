@@ -1,10 +1,11 @@
 ﻿  RSA.cpp
-D:\Education\Education2\Prog\RSA\RSA\RSA.cpp(47,20): warning C4244: аргумент: преобразование "unsigned __int64" в "long", возможна потеря данных
-D:\Education\Education2\Prog\RSA\RSA\RSA.cpp(51,23): warning C4244: аргумент: преобразование "unsigned __int64" в "long", возможна потеря данных
-D:\Education\Education2\Prog\RSA\RSA\RSA.cpp(51,20): warning C4244: аргумент: преобразование "unsigned __int64" в "long", возможна потеря данных
-D:\Education\Education2\Prog\RSA\RSA\RSA.cpp(72,47): warning C4244: аргумент: преобразование "unsigned __int64" в "long", возможна потеря данных
-D:\Education\Education2\Prog\RSA\RSA\RSA.cpp(72,44): warning C4244: аргумент: преобразование "unsigned __int64" в "long", возможна потеря данных
-D:\Education\Education2\Prog\RSA\RSA\RSA.cpp(87,57): warning C4244: аргумент: преобразование "unsigned __int64" в "long", возможна потеря данных
-D:\Education\Education2\Prog\RSA\RSA\RSA.cpp(87,54): warning C4244: аргумент: преобразование "unsigned __int64" в "long", возможна потеря данных
-D:\Education\Education2\Prog\RSA\RSA\RSA.cpp(29,10): warning C4101: flag: неиспользованная локальная переменная
-  RSA.vcxproj -> D:\Education\Education2\Prog\RSA\x64\Debug\RSA.exe
+D:\Education\Education2\Prog\Новая папка\university_project\RSA\RSA.cpp(47,20): warning C4244: аргумент: преобразование "unsigned __int64" в "long", возможна потеря данных
+D:\Education\Education2\Prog\Новая папка\university_project\RSA\RSA.cpp(51,23): warning C4244: аргумент: преобразование "unsigned __int64" в "long", возможна потеря данных
+D:\Education\Education2\Prog\Новая папка\university_project\RSA\RSA.cpp(51,20): warning C4244: аргумент: преобразование "unsigned __int64" в "long", возможна потеря данных
+D:\Education\Education2\Prog\Новая папка\university_project\RSA\RSA.cpp(72,47): warning C4244: аргумент: преобразование "unsigned __int64" в "long", возможна потеря данных
+D:\Education\Education2\Prog\Новая папка\university_project\RSA\RSA.cpp(72,44): warning C4244: аргумент: преобразование "unsigned __int64" в "long", возможна потеря данных
+D:\Education\Education2\Prog\Новая папка\university_project\RSA\RSA.cpp(87,57): warning C4244: аргумент: преобразование "unsigned __int64" в "long", возможна потеря данных
+D:\Education\Education2\Prog\Новая папка\university_project\RSA\RSA.cpp(87,54): warning C4244: аргумент: преобразование "unsigned __int64" в "long", возможна потеря данных
+D:\Education\Education2\Prog\Новая папка\university_project\RSA\RSA.cpp(29,10): warning C4101: flag: неиспользованная локальная переменная
+  LINK : не найден или не выполнена сборка D:\Education\Education2\Prog\Новая папка\university_project\x64\Debug\RSA.exe при последней инкрементной компоновке; выполняется полная компоновка
+  RSA.vcxproj -> D:\Education\Education2\Prog\Новая папка\university_project\x64\Debug\RSA.exe

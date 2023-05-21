@@ -18,7 +18,7 @@ int main()
 {
 
 
-    unsigned long long int p = 11, q = 17, n, t, e, d;
+    unsigned long long int p = 83, q = 541, n, t, e, d;
 
     long int encryptedText[100];
     memset(encryptedText, 0, sizeof(encryptedText));
