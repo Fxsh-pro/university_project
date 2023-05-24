@@ -85,6 +85,11 @@ void change_pass_form::on_cancel_pushbutton_clicked()
     this->close();
 }
 
+void change_pass_form::on_pushButton_clicked()
+{
+    // ДЛЯ ТУПЫХ КЛИМОВ, ЭТО НЕ ТРОГАТЬ
+}
+
 
 void change_pass_form::on_pushButton_set_visible_pass_2_clicked()
 {

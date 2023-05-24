@@ -13,6 +13,7 @@ CONFIG += c++17
 SOURCES += \
     aboutuserform.cpp \
     authform.cpp \
+    bigprimegenerator.cpp \
     change_pass_form.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -21,6 +22,7 @@ SOURCES += \
 HEADERS += \
     aboutuserform.h \
     authform.h \
+    bigprimegenerator.h \
     change_pass_form.h \
     mainwindow.h \
     singletonClient.h

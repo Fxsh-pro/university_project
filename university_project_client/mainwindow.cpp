@@ -106,6 +106,21 @@ void MainWindow::button_is_pressed(QPushButton * but)
     }
 }
 
+void MainWindow::on_pushButton_Test_clicked()
+{
+    // NO, DON'T TOUCH ME THERE, THIS IS MY NO-NO-SQUARE
+}
+
+void MainWindow::on_listWidget_currentRowChanged(int currentRow)
+{
+    // NO, DON'T TOUCH ME THERE, THIS IS MY NO-NO-SQUARE
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    // NO, DON'T TOUCH ME THERE, THIS IS MY NO-NO-SQUARE
+}
+
 void MainWindow::on_pushButton_copy_login_clicked()
 {
     this->button_is_pressed(ui->pushButton_copy_login);
