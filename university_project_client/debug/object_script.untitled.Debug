@@ -1,0 +1,12 @@
+debug/aboutuserform.o
+debug/authform.o
+debug/bigprimegenerator.o
+debug/change_pass_form.o
+debug/main.o
+debug/mainwindow.o
+debug/singletonClient.o
+debug/moc_aboutuserform.o
+debug/moc_authform.o
+debug/moc_change_pass_form.o
+debug/moc_mainwindow.o
+debug/moc_singletonClient.o
