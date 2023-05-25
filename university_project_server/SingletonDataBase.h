@@ -47,37 +47,54 @@ class SingletonDataBase
         /// \brief createDB создаёт базу данных
         /// \param void
         /// \return void
+        ///
         static void createDB();
+
+
         /// \brief insertUser добавляет пользователя в базу
-        /// \param QString login, QString password, int position_id
+        /// \param QString login - логин пользователя, QString password - пароль пользователя, int position_id - id позиции пользователя
         /// \return void
+        ///
         static void insertUser(QString login, QString password, int position_id);
 
+
         /// \brief changePassword изменяет пароль пользователя для входа
-        /// \param QString login, QString newPassword
+        /// \param QString login - логин пользователя, QString newPassword - новый пароль пользователя
         /// \return void
+        ///
         static void changePassword(QString login, QString newPassword);
 
+
         /// \brief change_role изменяет роль пользователя
-        /// \param QString username, QString new_role
+        /// \param QString username - логин пользователя, QString new_role - новый уровень доступа
         /// \return void
+        ///
         static void change_role(QString username, QString new_role);
 
+
         /// \brief log_in существует, если ли пользователь с указанными данными
-        /// \param QString login, QString password
+        /// \param QString login - логин пользователя, QString password - пароль пользователя
         /// \return bool
+        ///
         static bool log_in(QString login, QString password);
 
+
         /// \brief show_pass показывает пароль к сервису
-        /// \param QString service_name, int access_level
+        /// \param QString service_name - имя службы, int access_level - уровень доступа
         /// \return QString
+        ///
         static QString show_pass(QString service_name, int access_level);
 
+        /// \brief send_user_data возварщает все данные о пользователе
+        /// \param QString login
+        /// \return QJsonObject
+        ///
         static QJsonObject send_user_data(QString login);
 
         /// \brief close закрывает базу данных
         /// \param void
         /// \return void
+        ///
         static void close();
 };
 #endif // SINGLETONDATABASE_H
