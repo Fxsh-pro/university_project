@@ -1,7 +1,7 @@
-#include "aboutuserform.h"
+#include "h/aboutuserform.h"
 #include "ui_aboutuserform.h"
-#include <authform.h>
-#include <mainwindow.h>
+#include "h/authform.h"
+#include "h/mainwindow.h"
 
 AboutUserForm::AboutUserForm(QDialog *parent) :
     QDialog(parent),

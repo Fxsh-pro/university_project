@@ -1,4 +1,4 @@
-#include "change_pass_form.h"
+#include "h/change_pass_form.h"
 #include "ui_change_pass_form.h"
 
 change_pass_form::change_pass_form(QWidget *parent) :

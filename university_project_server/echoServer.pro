@@ -18,11 +18,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    SingletonDataBase.cpp \
-    functions.cpp \
-        main.cpp \
-    md5.cpp \
-    mytcpserver.cpp
+    cpp/SingletonDataBase.cpp \
+    cpp/functions.cpp \
+    cpp/main.cpp \
+    cpp/md5.cpp \
+    cpp/mytcpserver.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -30,7 +30,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    SingletonDataBase.h \
-    functions.h \
-    md5.h \
-    mytcpserver.h
+    h/SingletonDataBase.h \
+    h/functions.h \
+    h/md5.h \
+    h/mytcpserver.h

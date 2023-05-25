@@ -1,7 +1,7 @@
-#include "mainwindow.h"
+#include "h/mainwindow.h"
 #include "ui_mainwindow.h"
-#include <aboutuserform.h>
-#include "singletonClient.h"
+#include "h/aboutuserform.h"
+#include "h/singletonClient.h"
 #include <QClipboard>
 #include <QApplication>
 #include <QTimer>

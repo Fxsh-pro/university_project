@@ -11,27 +11,27 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    aboutuserform.cpp \
-    authform.cpp \
-    bigprimegenerator.cpp \
-    change_pass_form.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    singletonClient.cpp
+    cpp/aboutuserform.cpp \
+    cpp/authform.cpp \
+    cpp/bigprimegenerator.cpp \
+    cpp/change_pass_form.cpp \
+    cpp/main.cpp \
+    cpp/mainwindow.cpp \
+    cpp/singletonClient.cpp
 
 HEADERS += \
-    aboutuserform.h \
-    authform.h \
-    bigprimegenerator.h \
-    change_pass_form.h \
-    mainwindow.h \
-    singletonClient.h
+    h/aboutuserform.h \
+    h/authform.h \
+    h/bigprimegenerator.h \
+    h/change_pass_form.h \
+    h/mainwindow.h \
+    h/singletonClient.h
 
 FORMS += \
-    aboutuserform.ui \
-    authform.ui \
-    change_pass_form.ui \
-    mainwindow.ui
+    ui/aboutuserform.ui \
+    ui/authform.ui \
+    ui/change_pass_form.ui \
+    ui/mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

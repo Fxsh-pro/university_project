@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include <QDebug>
-#include "singletonClient.h"
+#include "h/singletonClient.h"
 #include <QKeyEvent>
 
 

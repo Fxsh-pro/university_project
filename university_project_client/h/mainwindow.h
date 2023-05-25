@@ -2,8 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "authform.h"
-#include <aboutuserform.h>
+#include "h/authform.h"
+#include <h/aboutuserform.h>
 #include <QListWidget>
 #include <QMessageBox>
 
