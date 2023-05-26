@@ -1,5 +1,5 @@
 #include "h/mainwindow.h"
-#include "ui_mainwindow.h"
+#include "ui_h/ui_mainwindow.h"
 #include "h/aboutuserform.h"
 #include "h/singletonClient.h"
 #include <QClipboard>

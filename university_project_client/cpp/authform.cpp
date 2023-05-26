@@ -1,5 +1,5 @@
 #include "h/authform.h"
-#include "ui_authform.h"
+#include "ui_h/ui_authform.h"
 
 AuthForm::AuthForm(QWidget *parent) :
     QDialog(parent),
