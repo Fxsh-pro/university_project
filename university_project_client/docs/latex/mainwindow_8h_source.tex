@@ -1,0 +1,77 @@
+\doxysection{mainwindow.\+h}
+\hypertarget{mainwindow_8h_source}{}\label{mainwindow_8h_source}\index{D:/Education/Education2/Prog/university\_project/university\_project\_client/h/mainwindow.h@{D:/Education/Education2/Prog/university\_project/university\_project\_client/h/mainwindow.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MAINWINDOW\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MAINWINDOW\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QMainWindow>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}h/authform.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <h/aboutuserform.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QListWidget>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <QMessageBox>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ QT\_BEGIN\_NAMESPACE}
+\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }Ui\ \{\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_main_window}{MainWindow}};\ \}}
+\DoxyCodeLine{00012\ QT\_END\_NAMESPACE}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_main_window}{MainWindow}}\ :\ \textcolor{keyword}{public}\ QMainWindow}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{class_main_window}{MainWindow}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_main_window}{\string~MainWindow}}();}
+\DoxyCodeLine{00022\ \ \ \ \ QTimer\ *\ timer1\ =\ \textcolor{keyword}{new}\ QTimer(\textcolor{keyword}{this});}
+\DoxyCodeLine{00023\ \ \ \ \ QTimer\ *\ timer2\ =\ \textcolor{keyword}{new}\ QTimer(\textcolor{keyword}{this});}
+\DoxyCodeLine{00024\ \textcolor{keyword}{public}\ slots:}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_window_a9322ef8e1081e1a3b20ca105249436ea}{slot\_show}}(QString\ log);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ update1();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ update2();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ button\_is\_pressed(QPushButton*\ but);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_pushButton\_Test\_clicked();}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_listWidget\_currentRowChanged(\textcolor{keywordtype}{int}\ currentRow);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_pushButton\_clicked();}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ slot\_on\_auth\_ok(QString\ user\_data);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ slot\_on\_auth\_invalid();}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_pushButton\_copy\_login\_clicked();}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_pushButton\_copy\_password\_clicked();}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_pushButton\_user\_info\_clicked();}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{void}\ user\_exit();}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ prepare\_window\_for\_user();}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_listWidget\_services\_itemClicked(QListWidgetItem\ *item);}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_lineEdit\_services\_search\_textEdited(\textcolor{keyword}{const}\ QString\ \&arg1);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ signals:}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{void}\ open\_user\_info();}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{void}\ about\_user\_info\_send(QString,\ QString);}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00128\ \ \ \ \ Ui::MainWindow\ *ui;}
+\DoxyCodeLine{00129\ \ \ \ \ \mbox{\hyperlink{class_auth_form}{AuthForm}}\ *ui\_auth;}
+\DoxyCodeLine{00130\ \ \ \ \ \mbox{\hyperlink{class_about_user_form}{AboutUserForm}}\ *ui\_user\_info;}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ QJsonObject\ user\_data;}
+\DoxyCodeLine{00133\ \};}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MAINWINDOW\_H}}
+
+\end{DoxyCode}

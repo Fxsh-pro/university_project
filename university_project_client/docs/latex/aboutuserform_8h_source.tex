@@ -1,0 +1,47 @@
+\doxysection{aboutuserform.\+h}
+\hypertarget{aboutuserform_8h_source}{}\label{aboutuserform_8h_source}\index{D:/Education/Education2/Prog/university\_project/university\_project\_client/h/aboutuserform.h@{D:/Education/Education2/Prog/university\_project/university\_project\_client/h/aboutuserform.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ABOUTUSERFORM\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ABOUTUSERFORM\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QDialog>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}change\_pass\_form.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }Ui\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_about_user_form}{AboutUserForm}};}
+\DoxyCodeLine{00010\ \}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_about_user_form}{AboutUserForm}}\ :\ \textcolor{keyword}{public}\ QDialog}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_about_user_form}{AboutUserForm}}(QDialog\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_about_user_form}{\string~AboutUserForm}}();}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_pushButton\_2\_clicked();}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_pushButton\_exit\_clicked();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_user\_data\_info(QString\ name,\ QString\ access\_level);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_pushButton\_change\_pass\_clicked();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ signals:}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ user\_exit\_press();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ change\_pass\_press(QString\ user\_login);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00047\ \ \ \ \ Ui::AboutUserForm\ *ui;}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{classchange__pass__form}{change\_pass\_form}}\ *ui\_change\_pass;}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_main_window}{MainWindow}};}
+\DoxyCodeLine{00051\ \};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ABOUTUSERFORM\_H}}
+
+\end{DoxyCode}

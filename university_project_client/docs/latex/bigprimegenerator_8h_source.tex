@@ -1,0 +1,48 @@
+\doxysection{bigprimegenerator.\+h}
+\hypertarget{bigprimegenerator_8h_source}{}\label{bigprimegenerator_8h_source}\index{D:/Education/Education2/Prog/university\_project/university\_project\_client/h/bigprimegenerator.h@{D:/Education/Education2/Prog/university\_project/university\_project\_client/h/bigprimegenerator.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BIGPRIMEGENERATOR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BIGPRIMEGENERATOR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <bitset>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_big_prime_generator}{BigPrimeGenerator}}}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{class_big_prime_generator}{\string~BigPrimeGenerator}}()\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_big_prime_generator}{BigPrimeGenerator}}\&\ operator\ =\ (\mbox{\hyperlink{class_big_prime_generator}{BigPrimeGenerator}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ Реализован\ через\ битовые\ операции\ для\ быстроты}}
+\DoxyCodeLine{00022\ \textcolor{comment}{}\ \ \ \ \textcolor{keyword}{static}\ uint64\_t\ mulmod(uint64\_t\ a,\ uint64\_t\ b,\ uint64\_t\ m);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00029\ \textcolor{comment}{}\ \ \ \ \textcolor{keyword}{static}\ uint64\_t\ powMod(uint64\_t\ a,\ uint64\_t\ b,\ uint64\_t\ n);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ Вектор\ первых\ простых\ чисел,\ для\ нахождения\ кандидатов\ на\ простоту}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<int>\ first\_primes;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ идем\ через\ все\ 64\ бита\ и\ устанавливаем\ случайно\ значение\ 0\ или\ 1}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ первый\ и\ последний\ бит\ устанавливаем\ значение\ равным\ 1,\ чтобы\ получить\ просто\ большое\ число}}
+\DoxyCodeLine{00040\ \textcolor{comment}{}\ \ \ \ \textcolor{keyword}{static}\ uint64\_t\ getRandom64();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{static}\ uint64\_t\ getLowLevelPrime();}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ Проверка\ на\ то,\ является\ ли\ число\ составным\ или\ нет}}
+\DoxyCodeLine{00053\ \textcolor{comment}{}\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ trialComposite(uint64\_t\ a,\ uint64\_t\ evenC,\ uint64\_t\ to\_test,\ \textcolor{keywordtype}{int}\ max\_div\_2);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00060\ \textcolor{comment}{}\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ MillerRabinTest(uint64\_t\ to\_test);}
+\DoxyCodeLine{00061\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ Получаем\ большое\ простое\ число}}
+\DoxyCodeLine{00067\ \textcolor{comment}{}\ \ \ \ \textcolor{keyword}{static}\ uint64\_t\ \mbox{\hyperlink{class_big_prime_generator_ab9ee02f07c38461394b72df6f8f898c5}{getBigPrime}}();}
+\DoxyCodeLine{00068\ \};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ BIGPRIMEGENERATOR\_H}}
+
+\end{DoxyCode}

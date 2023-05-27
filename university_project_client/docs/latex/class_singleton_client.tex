@@ -1,0 +1,163 @@
+\doxysection{Singleton\+Client Class Reference}
+\hypertarget{class_singleton_client}{}\label{class_singleton_client}\index{SingletonClient@{SingletonClient}}
+Inheritance diagram for Singleton\+Client\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_singleton_client}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_singleton_client_a533ddc5b4d41df40901e0f0180e14652}{message\+\_\+from\+\_\+server}} (QString msg)
+\begin{DoxyCompactList}\small\item\em message\+\_\+from\+\_\+server отвечает за получение сообщений от сервера \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_singleton_client_a221a4913d17f0139ed77dc39d167465e}{auth\+\_\+ok}} (QString)
+\begin{DoxyCompactList}\small\item\em auth\+\_\+ok отвечает за успешную авторизацию \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_singleton_client_a05a9ed68894c6ce599a5c8ed8bc4d779}{auth\+\_\+invalid}} ()
+\begin{DoxyCompactList}\small\item\em auth\+\_\+invalid отвечает за неуспешную автоирзацию \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_singleton_client_a273f7065ff0f831aaa4d397f97e7c47b}{change\+\_\+pass\+\_\+ok}} ()
+\begin{DoxyCompactList}\small\item\em change\+\_\+pass\+\_\+ok отвечает за успешное изменение пароля \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_singleton_client_a2946a7349de88749b09850aed640bfa2}{send\+\_\+msg\+\_\+to\+\_\+server}} (QString query)
+\begin{DoxyCompactList}\small\item\em send\+\_\+msg\+\_\+to\+\_\+server отвечает за отправку сообщений на сервер \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_singleton_client}{Singleton\+Client}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_singleton_client_a27e7002d7386698d26f4127939567493}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em get\+Instance отвечает за получение объекта \doxylink{class_singleton_client}{Singleton\+Client} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_singleton_client_a89ef2a4126710e01b3e8c7632496ea0c}\label{class_singleton_client_a89ef2a4126710e01b3e8c7632496ea0c} 
+{\bfseries Singleton\+Client} (QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
+\item 
+\Hypertarget{class_singleton_client_a1774b93230a4d1940b520241d3c6f2c0}\label{class_singleton_client_a1774b93230a4d1940b520241d3c6f2c0} 
+{\bfseries Singleton\+Client} (const \mbox{\hyperlink{class_singleton_client}{Singleton\+Client}} \&)=delete
+\item 
+\Hypertarget{class_singleton_client_ad227a600d69ac2ec97dc40522a93d8f6}\label{class_singleton_client_ad227a600d69ac2ec97dc40522a93d8f6} 
+\mbox{\hyperlink{class_singleton_client}{Singleton\+Client}} \& {\bfseries operator=} (\mbox{\hyperlink{class_singleton_client}{Singleton\+Client}} \&)=delete
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_singleton_client_aa93ce997b9645496c0e17460fba08432}\label{class_singleton_client_aa93ce997b9645496c0e17460fba08432} 
+class {\bfseries Singleton\+Destroyer}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_singleton_client_a05a9ed68894c6ce599a5c8ed8bc4d779}\label{class_singleton_client_a05a9ed68894c6ce599a5c8ed8bc4d779} 
+\index{SingletonClient@{SingletonClient}!auth\_invalid@{auth\_invalid}}
+\index{auth\_invalid@{auth\_invalid}!SingletonClient@{SingletonClient}}
+\doxysubsubsection{\texorpdfstring{auth\_invalid}{auth\_invalid}}
+{\footnotesize\ttfamily void Singleton\+Client\+::auth\+\_\+invalid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+auth\+\_\+invalid отвечает за неуспешную автоирзацию 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{class_singleton_client_a221a4913d17f0139ed77dc39d167465e}\label{class_singleton_client_a221a4913d17f0139ed77dc39d167465e} 
+\index{SingletonClient@{SingletonClient}!auth\_ok@{auth\_ok}}
+\index{auth\_ok@{auth\_ok}!SingletonClient@{SingletonClient}}
+\doxysubsubsection{\texorpdfstring{auth\_ok}{auth\_ok}}
+{\footnotesize\ttfamily void Singleton\+Client\+::auth\+\_\+ok (\begin{DoxyParamCaption}\item[{QString}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+auth\+\_\+ok отвечает за успешную авторизацию 
+
+
+\begin{DoxyParams}{Parameters}
+{\em QString} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{class_singleton_client_a273f7065ff0f831aaa4d397f97e7c47b}\label{class_singleton_client_a273f7065ff0f831aaa4d397f97e7c47b} 
+\index{SingletonClient@{SingletonClient}!change\_pass\_ok@{change\_pass\_ok}}
+\index{change\_pass\_ok@{change\_pass\_ok}!SingletonClient@{SingletonClient}}
+\doxysubsubsection{\texorpdfstring{change\_pass\_ok}{change\_pass\_ok}}
+{\footnotesize\ttfamily void Singleton\+Client\+::change\+\_\+pass\+\_\+ok (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+change\+\_\+pass\+\_\+ok отвечает за успешное изменение пароля 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{class_singleton_client_a27e7002d7386698d26f4127939567493}\label{class_singleton_client_a27e7002d7386698d26f4127939567493} 
+\index{SingletonClient@{SingletonClient}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!SingletonClient@{SingletonClient}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_singleton_client}{Singleton\+Client}} \texorpdfstring{$\ast$}{*} Singleton\+Client\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+get\+Instance отвечает за получение объекта \doxylink{class_singleton_client}{Singleton\+Client} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Singleton\+Client\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+\Hypertarget{class_singleton_client_a533ddc5b4d41df40901e0f0180e14652}\label{class_singleton_client_a533ddc5b4d41df40901e0f0180e14652} 
+\index{SingletonClient@{SingletonClient}!message\_from\_server@{message\_from\_server}}
+\index{message\_from\_server@{message\_from\_server}!SingletonClient@{SingletonClient}}
+\doxysubsubsection{\texorpdfstring{message\_from\_server}{message\_from\_server}}
+{\footnotesize\ttfamily void Singleton\+Client\+::message\+\_\+from\+\_\+server (\begin{DoxyParamCaption}\item[{QString}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+message\+\_\+from\+\_\+server отвечает за получение сообщений от сервера 
+
+
+\begin{DoxyParams}{Parameters}
+{\em QString} & msg -\/ сообщение \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{class_singleton_client_a2946a7349de88749b09850aed640bfa2}\label{class_singleton_client_a2946a7349de88749b09850aed640bfa2} 
+\index{SingletonClient@{SingletonClient}!send\_msg\_to\_server@{send\_msg\_to\_server}}
+\index{send\_msg\_to\_server@{send\_msg\_to\_server}!SingletonClient@{SingletonClient}}
+\doxysubsubsection{\texorpdfstring{send\_msg\_to\_server()}{send\_msg\_to\_server()}}
+{\footnotesize\ttfamily void Singleton\+Client\+::send\+\_\+msg\+\_\+to\+\_\+server (\begin{DoxyParamCaption}\item[{QString}]{query }\end{DoxyParamCaption})}
+
+
+
+send\+\_\+msg\+\_\+to\+\_\+server отвечает за отправку сообщений на сервер 
+
+
+\begin{DoxyParams}{Parameters}
+{\em QString} & query -\/ сообщение \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Education/\+Education2/\+Prog/university\+\_\+project/university\+\_\+project\+\_\+client/h/singleton\+Client.\+h\end{DoxyCompactItemize}

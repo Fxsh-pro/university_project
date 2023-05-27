@@ -1,0 +1,54 @@
+\doxysection{change\+\_\+pass\+\_\+form.\+h}
+\hypertarget{change__pass__form_8h_source}{}\label{change__pass__form_8h_source}\index{D:/Education/Education2/Prog/university\_project/university\_project\_client/h/change\_pass\_form.h@{D:/Education/Education2/Prog/university\_project/university\_project\_client/h/change\_pass\_form.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CHANGE\_PASS\_FORM\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CHANGE\_PASS\_FORM\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QDialog>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QKeyEvent>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QRegularExpression>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <QMessageBox>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <QString>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}h/singletonClient.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{namespace\ }Ui\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classchange__pass__form}{change\_pass\_form}};}
+\DoxyCodeLine{00014\ \}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classchange__pass__form}{change\_pass\_form}}\ :\ \textcolor{keyword}{public}\ QDialog}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classchange__pass__form}{change\_pass\_form}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{classchange__pass__form}{\string~change\_pass\_form}}();}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}\ slots:}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classchange__pass__form_ac1e4b1bb6273d3ed4c4022cb97e6af26}{slot\_on\_change\_pass}}(QString\ user\_name);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classchange__pass__form_a90e73af2df65a8eb8fa1dbab8634adfd}{keyPressEvent}}(QKeyEvent*\ event);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_confirm\_pushbutton\_clicked();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ slot\_on\_change\_pass\_ok();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_cancel\_pushbutton\_clicked();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_pushButton\_clicked();}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_pushButton\_set\_visible\_pass\_2\_clicked();}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_pushButton\_set\_visible\_pass\_clicked();}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00074\ \ \ \ \ Ui::change\_pass\_form\ *ui;}
+\DoxyCodeLine{00075\ \ \ \ \ QString\ user\_login;}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{bool}\ echo\_1\_pass\_mode;}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{bool}\ echo\_2\_pass\_mode;}
+\DoxyCodeLine{00078\ \};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CHANGE\_PASS\_FORM\_H}}
+
+\end{DoxyCode}
