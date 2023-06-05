@@ -23,6 +23,10 @@ private slots:
 
     void get_admin_json(QString ser_json);
 
+    void prepare_window();
+
+    void on_comboBox_currentIndexChanged(int index);
+
 private:
     Ui::admin_form *ui;
     QJsonObject admin_data;

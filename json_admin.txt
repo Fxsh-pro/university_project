@@ -26,7 +26,7 @@
 	"Postions":[
 		"Position1":{
 			"name": "position_name",
-			"Access": [
+			"access_list": [
 				"Access1": "SomeAcc1",
 				"Access2": "SomeAcc2",
 				"Access3": "SomeAcc3"

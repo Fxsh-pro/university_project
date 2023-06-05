@@ -230,7 +230,7 @@ QJsonObject SingletonDataBase::send_admin_data()
 
     query.prepare("SELECT login, position_name FROM User JOIN Position "
                   "ON User.position_id = Position.position_id");
-    if (!query.exec()) qDebug() << query.lastError().text();
+    if (!query.exec()) qDebug() << query.lastError().text() << " Users query";
     while(query.next())
     {
         user["login"] = query.value(0).toString();
@@ -241,7 +241,7 @@ QJsonObject SingletonDataBase::send_admin_data()
     query.prepare("SELECT service_name, login, password, access_name FROM Services JOIN Access "
                   "ON Services.access_level = Access.access_level "
                   "JOIN Services_name ON Services_name.service_id = Services.service_id");
-    if (!query.exec()) qDebug() << query.lastError().text();
+    if (!query.exec()) qDebug() << query.lastError().text() << " Services query";
     while(query.next())
     {
         service["name"] = query.value(0).toString();
@@ -252,7 +252,7 @@ QJsonObject SingletonDataBase::send_admin_data()
     }
 
     query.prepare("SELECT access_name FROM access");
-    if (!query.exec()) qDebug() << query.lastError().text();
+    if (!query.exec()) qDebug() << query.lastError().text() << " access query";
     while(query.next())
     {
         access["name"] = query.value(0).toString();
@@ -261,7 +261,7 @@ QJsonObject SingletonDataBase::send_admin_data()
 
     QVector<QString> pos_vector;
     query.prepare("SELECT position_name FROM Position");
-    if (!query.exec()) qDebug() << query.lastError().text();
+    if (!query.exec()) qDebug() << query.lastError().text() << " positions query";
     while(query.next())
     {
         pos_vector.append(query.value(0).toString());
@@ -270,12 +270,13 @@ QJsonObject SingletonDataBase::send_admin_data()
     {
         position["name"] = i;
         QJsonArray Access_of_position;
-        QJsonObject tmp_access;
-        query.prepare("SELECT access_name FROM position JOIN Access_position ON Position.position_id = Access_position.position_id"
-                      "JOIN Access ON Access.access_level = Access_position.access_level WHERE position_name = :position");
-        query.bindValue(":position", i);
+        query.prepare("SELECT access_name FROM position JOIN Access_position ON Position.position_id = Access_position.position_id "
+                      "JOIN Access ON Access.access_level = Access_position.access_level WHERE position_name = ?");
+        query.bindValue(0, i);
+        if (!query.exec()) qDebug() << query.lastError().text() << " Access_of_position query";
         while(query.next())
         {
+            QJsonObject tmp_access;
             tmp_access["name"] = query.value(0).toString();
             Access_of_position.append(tmp_access);
         }
