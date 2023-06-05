@@ -1,0 +1,48 @@
+{
+	"User":[
+		"User1"{
+			"login": "SomeLogin",
+			"position": "SomePos"
+		},
+		"User2"{
+			"login": "SomeLogin1",
+			"position": "SomePos"
+		}
+	],
+	"Services":[
+		"Service1"{
+			"name": "SomeName",
+			"login": "SomeLogin",
+			"password": "SomePass",
+			"access_level": "Access1"
+		},
+		"Service2"{
+			"name": "SomeName1",
+			"login": "SomeLogin1",
+			"password": "SomePass1",
+			"access_level": "Access1"
+		}
+	],
+	"Postions":[
+		"Position1":{
+			"name": "position_name",
+			"Access": [
+				"Access1": "SomeAcc1",
+				"Access2": "SomeAcc2",
+				"Access3": "SomeAcc3"
+			]
+		},
+		"Position1":{
+			"name": "position_name",
+			"access_list": [
+				"Access1": "SomeAcc1",
+				"Access2": "SomeAcc2",
+				"Access3": "SomeAcc3"
+			]
+		}
+	],
+	"Access":[
+		"Access1": "SomeAccess",
+		"Acesss2", "SomeAccess2"
+	]
+}

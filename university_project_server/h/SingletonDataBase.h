@@ -11,6 +11,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QJsonDocument>
+#include <QVector>
 
 class SingletonDataBase;
 
@@ -90,6 +91,8 @@ class SingletonDataBase
         /// \return QJsonObject
         ///
         static QJsonObject send_user_data(QString login);
+
+        static QJsonObject send_admin_data();
 
         /// \brief close закрывает базу данных
         /// \param void

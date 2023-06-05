@@ -6,6 +6,7 @@
 #include <h/aboutuserform.h>
 #include <QListWidget>
 #include <QMessageBox>
+#include "ui/admin_form.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -122,12 +123,16 @@ private slots:
 signals:
     void open_user_info();
 
+    void request_admin_json();
+
     void about_user_info_send(QString, QString);
 
 private:
     Ui::MainWindow *ui;
     AuthForm *ui_auth;
     AboutUserForm *ui_user_info;
+    admin_form* ui_admin;
+
 
     QJsonObject user_data;
 };

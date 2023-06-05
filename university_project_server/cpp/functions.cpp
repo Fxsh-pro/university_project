@@ -9,8 +9,15 @@ QByteArray log_in(QString login, QString password){
 
     bool ok = SingletonDataBase::log_in(login,QString::fromStdString(hash.get_hash(password.toStdString())));
     if (ok) {
-        QJsonDocument data(SingletonDataBase::send_user_data(login));
+        QJsonObject user_data = SingletonDataBase::send_user_data(login);
+        QJsonDocument data(user_data);
         QString result_data = data.toJson();
+        if (user_data["Position"] == "администратор")
+        {
+            QJsonDocument admin_data(SingletonDataBase::send_admin_data());
+            QString result_admin_data = admin_data.toJson();
+            return QByteArray("auth+&" + result_data.toUtf8()+"&" + result_admin_data.toUtf8() + "\r\n");
+        }
         return QByteArray("auth+&" + result_data.toUtf8()+"\r\n");
     }
 

@@ -34,6 +34,10 @@ void SingletonClient::slotServerRead(){
     //emit message_from_server(msg);
     if(answer[0] == "auth+")
         emit auth_ok(answer[1]);
+        if (answer.size() == 3)
+        {
+            emit admin_ok(answer[2]);
+        }
     else if (answer[0] == "auth-\r\n")
     {
         emit auth_invalid();

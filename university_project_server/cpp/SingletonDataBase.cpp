@@ -219,6 +219,79 @@ QJsonObject SingletonDataBase::send_user_data(QString login)
     return user_data;
 }
 
+QJsonObject SingletonDataBase::send_admin_data()
+{
+    QJsonObject admin_data;
+
+    QJsonArray Users, Services, Positions, Accesses;
+    QJsonObject user, service, position, access;
+
+    QSqlQuery query(db);
+
+    query.prepare("SELECT login, position_name FROM User JOIN Position "
+                  "ON User.position_id = Position.position_id");
+    if (!query.exec()) qDebug() << query.lastError().text();
+    while(query.next())
+    {
+        user["login"] = query.value(0).toString();
+        user["position"] = query.value(1).toString();
+        Users.append(user);
+    }
+
+    query.prepare("SELECT service_name, login, password, access_name FROM Services JOIN Access "
+                  "ON Services.access_level = Access.access_level "
+                  "JOIN Services_name ON Services_name.service_id = Services.service_id");
+    if (!query.exec()) qDebug() << query.lastError().text();
+    while(query.next())
+    {
+        service["name"] = query.value(0).toString();
+        service["login"] = query.value(1).toString();
+        service["password"] = query.value(2).toString();
+        service["access_name"] = query.value(3).toString();
+        Services.append(service);
+    }
+
+    query.prepare("SELECT access_name FROM access");
+    if (!query.exec()) qDebug() << query.lastError().text();
+    while(query.next())
+    {
+        access["name"] = query.value(0).toString();
+        Accesses.append(access);
+    }
+
+    QVector<QString> pos_vector;
+    query.prepare("SELECT position_name FROM Position");
+    if (!query.exec()) qDebug() << query.lastError().text();
+    while(query.next())
+    {
+        pos_vector.append(query.value(0).toString());
+    }
+    for (auto i:pos_vector)
+    {
+        position["name"] = i;
+        QJsonArray Access_of_position;
+        QJsonObject tmp_access;
+        query.prepare("SELECT access_name FROM position JOIN Access_position ON Position.position_id = Access_position.position_id"
+                      "JOIN Access ON Access.access_level = Access_position.access_level WHERE position_name = :position");
+        query.bindValue(":position", i);
+        while(query.next())
+        {
+            tmp_access["name"] = query.value(0).toString();
+            Access_of_position.append(tmp_access);
+        }
+        position["access_list"] = Access_of_position;
+
+        Positions.append(position);
+    }
+
+    admin_data["Users"] = Users;
+    admin_data["Services"] = Services;
+    admin_data["Positions"] = Positions;
+    admin_data["Access"] = Accesses;
+
+    return admin_data;
+}
+
 void SingletonDataBase::close(){
     if(db.isOpen())
         db.close();

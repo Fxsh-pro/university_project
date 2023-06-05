@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->setupUi(this);
     ui_auth = new AuthForm;
     ui_user_info = new AboutUserForm;
+    ui_admin = new admin_form;
 
     connect(timer1, SIGNAL(timeout()), this, SLOT(update1()));
     connect(timer2, SIGNAL(timeout()), this, SLOT(update2()));
@@ -33,9 +34,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
             &SingletonClient::auth_invalid,
             this,
             &MainWindow::slot_on_auth_invalid);
+    connect(ui_admin, &admin_form::press_user_info,
+            this, &MainWindow::on_pushButton_user_info_clicked);
 
-    connect(this, &MainWindow::open_user_info,
-            ui_user_info, &AboutUserForm::show);
 
     ui_auth->show();
 
@@ -72,10 +73,17 @@ void MainWindow::prepare_window_for_user()
 void MainWindow::slot_on_auth_ok(QString user_data)
 {
     ui_auth->close();
-    this->show();
     QJsonDocument doc = QJsonDocument::fromJson(user_data.toUtf8());
+    if (doc.object()["Position"] == "администратор")
+    {
+        ui_admin->show();
+    }
+    else
+    {
+    this->show();
     this->user_data = doc.object();
     this->prepare_window_for_user();
+    }
 }
 
 void MainWindow::slot_on_auth_invalid()
@@ -87,6 +95,8 @@ void MainWindow::slot_on_auth_invalid()
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete ui_user_info;
+    delete ui_auth;
 }
 
 void MainWindow::button_is_pressed(QPushButton * but)
@@ -139,9 +149,17 @@ void MainWindow::on_pushButton_user_info_clicked()
 
 void MainWindow::user_exit()
 {
-    this->close();
-    ui->listWidget_services->clear();
-    ui_auth->show();
+    if (!this->isHidden())
+    {
+        this->close();
+        ui->listWidget_services->clear();
+        ui_auth->show();
+    }
+    else
+    {
+        ui_admin->show();
+        ui_auth->show();
+    }
 }
 
 void MainWindow::on_listWidget_services_itemClicked(QListWidgetItem *item)

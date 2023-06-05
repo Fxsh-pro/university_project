@@ -83,6 +83,7 @@ signals:
        ///
        void change_pass_ok();
 
+       void admin_ok(QString);
 };
 
 #endif // SINGLETONCLIENT_H

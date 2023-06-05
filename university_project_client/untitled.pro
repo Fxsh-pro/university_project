@@ -17,7 +17,8 @@ SOURCES += \
     cpp/change_pass_form.cpp \
     cpp/main.cpp \
     cpp/mainwindow.cpp \
-    cpp/singletonClient.cpp
+    cpp/singletonClient.cpp \
+    ui/admin_form.cpp
 
 HEADERS += \
     h/aboutuserform.h \
@@ -25,10 +26,12 @@ HEADERS += \
     h/bigprimegenerator.h \
     h/change_pass_form.h \
     h/mainwindow.h \
-    h/singletonClient.h
+    h/singletonClient.h \
+    ui/admin_form.h
 
 FORMS += \
     ui/aboutuserform.ui \
+    ui/admin_form.ui \
     ui/authform.ui \
     ui/change_pass_form.ui \
     ui/mainwindow.ui
