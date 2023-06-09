@@ -40,13 +40,21 @@ void SingletonClient::slotServerRead(){
             emit admin_ok(answer[2]);
         }
     }
-    else if (answer[0] == "auth-\r\n")
+    if (answer[0] == "auth-\r\n")
     {
         emit auth_invalid();
     }
-    else if (answer[0] == "change_pass+\r\n")
+    if (answer[0] == "change_pass+\r\n")
     {
         emit change_pass_ok();
+    }
+    if(answer[0] == "add_access+")
+    {
+        emit add_access_ok();
+    }
+    if (answer[0] == "add_access-")
+    {
+        emit add_access_fail();
     }
 }
 

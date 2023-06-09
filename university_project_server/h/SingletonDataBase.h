@@ -51,6 +51,7 @@ class SingletonDataBase
         ///
         static void createDB();
 
+        static bool add_new_access(QString new_access);
 
         /// \brief insertUser добавляет пользователя в базу
         /// \param QString login - логин пользователя, QString password - пароль пользователя, int position_id - id позиции пользователя

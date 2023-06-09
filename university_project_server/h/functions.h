@@ -7,6 +7,8 @@
 #include <QStringList>
 #include "h/md5.h"
 
+QByteArray add_new_access(QString new_access);
+
 /// \brief log_in отвечавет за вход в систему
 /// \param QString login - логин пользователя, QString password - пароль
 /// \return QByteArray response - сообщение-ответ сервера

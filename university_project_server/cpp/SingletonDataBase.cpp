@@ -110,7 +110,15 @@ void SingletonDataBase::createDB(){
     openDB();
 //    createTables();
 //    insertUser("1","1",1);
-//    generate_sevices();
+    //    generate_sevices();
+}
+
+bool SingletonDataBase::add_new_access(QString new_access)
+{
+    QSqlQuery query(db);
+    query.prepare("INSERT INTO Access(access_name) VALUES(:new_access)");
+    query.bindValue(":new_access", new_access);
+    return query.exec();
 }
 
 void  SingletonDataBase::insertUser(QString login, QString password, int position_id){

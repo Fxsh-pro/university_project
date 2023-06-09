@@ -18,7 +18,9 @@ SOURCES += \
     cpp/main.cpp \
     cpp/mainwindow.cpp \
     cpp/singletonClient.cpp \
-    ui/admin_form.cpp
+    ui/add_access_form.cpp \
+    ui/admin_form.cpp \
+    ui/change_access_name_form.cpp
 
 HEADERS += \
     h/aboutuserform.h \
@@ -27,12 +29,16 @@ HEADERS += \
     h/change_pass_form.h \
     h/mainwindow.h \
     h/singletonClient.h \
-    ui/admin_form.h
+    ui/add_access_form.h \
+    ui/admin_form.h \
+    ui/change_access_name_form.h
 
 FORMS += \
     ui/aboutuserform.ui \
+    ui/add_access_form.ui \
     ui/admin_form.ui \
     ui/authform.ui \
+    ui/change_access_name_form.ui \
     ui/change_pass_form.ui \
     ui/mainwindow.ui
 

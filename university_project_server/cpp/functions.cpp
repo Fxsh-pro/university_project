@@ -63,6 +63,9 @@ QByteArray parse(QString message){
             if(parts[0] == "log_out")
                 return log_out();
             break;
+        case 2:
+            if (parts[0] == "add_new_access")
+                    return add_new_access(parts[1]);
         case 3:
             if(parts[0] == "show_pass")
                 return show_pass(parts[1],parts[2].toInt());
@@ -78,4 +81,11 @@ QByteArray parse(QString message){
                 return add_user(parts[1],parts[2], parts[3].toInt());
     }
     return invalidRequest();
+}
+
+QByteArray add_new_access(QString new_access)
+{
+    if(SingletonDataBase::add_new_access(new_access))
+        return "add_access+";
+    else return "add_access-";
 }

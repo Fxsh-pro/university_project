@@ -50,6 +50,7 @@ void MyTcpServer::slotServerRead(){
     }
     if(array.right(1) == "\n")
     {
+        qDebug() << array;
         cTcpSocket->write(parse(array));
     }
 }

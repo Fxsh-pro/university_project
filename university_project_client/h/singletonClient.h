@@ -84,6 +84,10 @@ signals:
        void change_pass_ok();
 
        void admin_ok(QString);
+
+
+       void add_access_ok();
+       void add_access_fail();
 };
 
 #endif // SINGLETONCLIENT_H
