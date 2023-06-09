@@ -2,12 +2,12 @@
 #include "h/SingletonDataBase.h"
 #include "h/mytcpserver.h"
 
-QByteArray log_in(QString login, QString password){
+QByteArray log_in(QString login, QString password, QTcpSocket * cTcpSocket){
     MD5 hash;
 
     bool ok = SingletonDataBase::log_in(login,QString::fromStdString(hash.get_hash(password.toStdString())));
     if (ok) {
-        QJsonDocument data(SingletonDataBase::send_user_data(login));
+        QJsonDocument data(SingletonDataBase::send_user_data(login, cTcpSocket));
         QString result_data = data.toJson();
         return QByteArray("auth+#" + result_data.toUtf8());
     }
@@ -60,7 +60,7 @@ QByteArray parse(QString message, QTcpSocket* cTcpSocket){
             if(parts[0] == "show_pass")
                 return show_pass(parts[1],parts[2].toInt());
             if (parts[0] == "log_in")
-                return log_in(parts[1],parts[2]);
+                return log_in(parts[1],parts[2], cTcpSocket);
             if (parts[0] == "change_role")
                 return change_role(parts[1],parts[2]);
             if (parts[0] == "change_pass")
@@ -76,6 +76,7 @@ QByteArray parse(QString message, QTcpSocket* cTcpSocket){
 }
 
 QByteArray set_client_public_keys(QByteArray keys, QTcpSocket* cTcpSocket) {
-    MyTcpServer::setKeys(keys, cTcpSocket);
-    return "Ключи клиента: " + MyTcpServer::getKeys(cTcpSocket);
+    MyTcpServer::setClientKeys(keys, cTcpSocket);
+    return "Ключи клиента: " + MyTcpServer::getClientKeys(cTcpSocket);
 }
+

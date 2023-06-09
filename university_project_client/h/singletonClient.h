@@ -32,11 +32,10 @@ class SingletonClient : public QObject
     Q_OBJECT
     private:
 //      int access_level = 0;
-        RSA rsa;
+        static unsigned long long int p, q, n, t, e, d;
         static SingletonClient * p_instance;
         static SingletonDestroyer destroyer;
         QTcpSocket * mTcpSocket;
-        QVector<long int> server_public_keys;
     protected:
         explicit SingletonClient(QObject *parent = nullptr);
         SingletonClient(const SingletonClient& ) = delete;
@@ -44,6 +43,11 @@ class SingletonClient : public QObject
         ~SingletonClient();
         friend class SingletonDestroyer;
     public:
+
+        static QByteArray getClientPubKeys();
+        static QByteArray getClientPrKeys();
+
+        QList<QByteArray> server_public_keys;
         /// \brief getInstance отвечает за получение объекта SingletonClient
         /// \param void
         /// \return SingletonClient*

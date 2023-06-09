@@ -1,39 +1,8 @@
 #include "h/rsa.h"
 #include "h/bigprimegenerator.h"
 
-RSA::RSA() {
-    long long int p = BigPrimeGenerator::getBigPrime(), q = BigPrimeGenerator::getBigPrime();
-
-
-    memset(encryptedText, 0, sizeof(encryptedText));
-
-    memset(decryptedText, 0, sizeof(decryptedText));
-
-    // Cоздание открытого и секретного ключей
-
-    // 1. Выбираются два различных случайных простых числа p и q заданного размера
-    this->p = p;
-    this->q = q;
-
-    // 2. Вычисляется их произведение n = p ⋅ q, которое называется модулем.
-    this->n = this->p * this->q;
-
-    // 3. Вычисляется значение функции Эйлера от числа n: φ(n) = (p−1)⋅(q−1)
-    this->t = (this->p - 1) * (this->q - 1);
-
-    // 4. Выбирается целое число e ( 1 < e < φ(n) ), взаимно простое со значением функции Эйлера (t)
-    //	  Число e называется открытой экспонентой
-    this->e = calculateE(this->t);
-
-    // 5. Вычисляется число d, мультипликативно обратное к числу e по модулю φ(n), то есть число, удовлетворяющее сравнению:
-    //    d ⋅ e ≡ 1 (mod φ(n))
-    this->d = calculateD(this->e, this->t);
-
-
-    // 6. Пара {e, n} публикуется в качестве открытого ключа RSA
-
-    // 7. Пара {d, n} играет роль закрытого ключа RSA и держится в секрете
-}
+QVector<long int> RSA::encryptedText;
+QVector<long int> RSA::decryptedText;
 
 bool RSA::isPrime(long int prime){
     long int i, j;
@@ -100,53 +69,54 @@ long int RSA::calculateD(long int e, long int t){
 
 }
 
-QString RSA::encrypt(const QString msg, long int e, long int n){
-    QString ans = "";
+QString RSA::decrypt(const QString& encryptedMessage, long int d, long int n)
+{
+    QString decryptedText = "";
+    QString encryptedValue = "";
 
-    for (long int f = 0; f < msg.length(); f++)
+    for (long int i = 0; i < encryptedMessage.length(); i++)
     {
-
-        long int current, result;
-
-        current = msg[f].unicode() - 97;
-        result = 1;
-
-        for (unsigned long long int j = 0; j < e; j++)
+        if (encryptedMessage[i] == ' ')
         {
-            result = result * current;
-            result = result % n;
+            long int encryptedNum = std::stoi(encryptedValue.toStdString());
+            long int current = encryptedNum;
+            long int result = 1;
+
+            for (long int j = 0; j < d; j++)
+            {
+                result = (result * current) % n;
+            }
+
+            decryptedText += QString::number(result + 97);
+            encryptedValue = "";
         }
-
-        this->encryptedText[f] = result;
-        ans += (char)result;
-    };
-
-    return ans;
-}
-
-QString RSA::decrypt(const QString msg, long int d, long int n){
-    QString ans = "";
-
-    for (long int f = 0; f < msg.length(); f++)
-    {
-        long int current, result;
-
-        current = this->encryptedText[f];
-        result = 1;
-
-        for ( unsigned long long int j = 0; j < d; j++)
+        else
         {
-            result = result * current;
-            result = result % n;
+            encryptedValue += encryptedMessage[i];
         }
-
-        decryptedText[f] = result + 97;
-        ans += (char)(result + 97);
     }
 
-    return ans;
+    return decryptedText;
 }
 
-QByteArray RSA::getPubKeys() {
-    return QByteArray::number(this->e) + "#" + QByteArray::number(this->n);
+QString RSA::encrypt(const QString& message, long int e, long int n)
+{
+    QString encryptedText = "";
+
+    for (long int i = 0; i < message.length(); i++)
+    {
+        long int current = message[i].unicode() - 97;
+        long int result = 1;
+
+        for (long int j = 0; j < e; j++)
+        {
+            result = (result * current) % n;
+        }
+
+        encryptedText += QString::number(result) + " ";
+    }
+
+    return encryptedText;
 }
+
+

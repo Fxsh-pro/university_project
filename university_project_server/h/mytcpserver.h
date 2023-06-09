@@ -20,14 +20,17 @@ public slots:
     void slotClientDisconnected();
     void slotServerRead();
 
-    static void setKeys(QByteArray keys, QTcpSocket* cTcpSocket);
-    static QByteArray getKeys(QTcpSocket* cTcpSocket);
+    static void setClientKeys(QByteArray keys, QTcpSocket* cTcpSocket);
+    static QByteArray getClientKeys(QTcpSocket* cTcpSocket);
+
+    static QByteArray getServerPubKeys();
+    static QByteArray getServerPrKeys();
 
 private:
+    static unsigned long long int p, q, n, t, e, d;
     QTcpServer* mTcpServer;
     static QHash<QTcpSocket*, QByteArray> mTcpSocket;
     int server_status;
-    RSA rsa;
 };
 
 #endif // MYTCPSERVER_H

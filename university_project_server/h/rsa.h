@@ -9,24 +9,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 class RSA{
 private:
-    long int encryptedText[100];
-
-    long int decryptedText[100];
-
-    unsigned long long int p, q, n, t, e, d;
-
-    bool isPrime(long int);
-    long int calculateE(long int);
-    long int greatestCommonDivisor(long int, long int);
-    long int calculateD(long int, long int);
+    static QVector<long int> encryptedText;
+    static QVector<long int> decryptedText;
 public:
     RSA();
-    QString encrypt(const QString msg, long int e, long int n);
-    QString decrypt(const QString msg, long int d, long int n);
-    QByteArray getPubKeys();
+
+    static bool isPrime(long int);
+    static long int calculateE(long int);
+    static long int greatestCommonDivisor(long int, long int);
+    static long int calculateD(long int, long int);
+    static QString encrypt(const QString& message, long int e, long int n);
+    static QString decrypt(const QString& encryptedMessage, long int d, long int n);
 };
 
 

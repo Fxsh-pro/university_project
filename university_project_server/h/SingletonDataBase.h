@@ -11,6 +11,8 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QJsonDocument>
+#include "h/rsa.h"
+#include "qtcpsocket.h"
 
 class SingletonDataBase;
 
@@ -89,7 +91,7 @@ class SingletonDataBase
         /// \param QString login
         /// \return QJsonObject
         ///
-        static QJsonObject send_user_data(QString login);
+        static QJsonObject send_user_data(QString login, QTcpSocket * cTcpSocket);
 
         /// \brief close закрывает базу данных
         /// \param void

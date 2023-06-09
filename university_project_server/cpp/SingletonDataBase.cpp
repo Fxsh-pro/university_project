@@ -1,4 +1,5 @@
 #include "h/SingletonDataBase.h"
+#include "h/mytcpserver.h"
 
 
 DatabaseDestroyer::~DatabaseDestroyer(){delete p_instance;}
@@ -180,7 +181,7 @@ QString SingletonDataBase::show_pass(QString service_name, int access_level){
 
 }
 
-QJsonObject SingletonDataBase::send_user_data(QString login)
+QJsonObject SingletonDataBase::send_user_data(QString login, QTcpSocket * cTcpSocket)
 {
     QJsonObject user_data;
     QJsonArray Services;
@@ -204,16 +205,19 @@ QJsonObject SingletonDataBase::send_user_data(QString login)
 
     if (!query.exec()) qDebug() << query.lastError().text();
 
+    QList<QByteArray> keys = MyTcpServer::getClientKeys(cTcpSocket).split('#');
+
     while (query.next())
     {
         QJsonObject service;
         service["name"] = query.value(0).toString();
         service["login"] = query.value(1).toString();
-        service["password"] = query.value(2).toString();
+        service["password"] = RSA::encrypt(query.value(2).toString(), keys[0].toLong(), keys[1].toLong());
+
+        qDebug() << service["password"];
 
         Services.append(service);
     }
-
     user_data["Services"] = Services;
 
     return user_data;

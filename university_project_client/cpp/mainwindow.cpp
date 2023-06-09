@@ -10,6 +10,8 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QFontDatabase>
+#include "h/rsa.h"
+
 
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -143,23 +145,27 @@ void MainWindow::user_exit()
 
 void MainWindow::on_listWidget_services_itemClicked(QListWidgetItem *item)
 {
+
+
     if (ui->frame_3->isHidden())
     {
         ui->frame_3->show();
     }
 
     QJsonArray ServicesArr = user_data["Services"].toArray();
+
+    QList<QByteArray> keys = SingletonClient::getClientPrKeys().split('#');
+
     for (const QJsonValue& value : ServicesArr)
     {
         QJsonObject object = value.toObject();
         if (item->text() == object["name"].toString())
         {
             ui->lineEdit_service_login->setText(object["login"].toString());
-            ui->lineEdit_service_password->setText(object["password"].toString());
+            ui->lineEdit_service_password->setText(RSA::decrypt(object["password"].toString(), keys[0].toLong(), keys[1].toLong()).toUtf8());
             break;
         }
     }
-
 }
 
 

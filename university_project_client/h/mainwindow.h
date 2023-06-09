@@ -24,6 +24,7 @@ public:
     ~MainWindow();
     QTimer * timer1 = new QTimer(this);
     QTimer * timer2 = new QTimer(this);
+
 public slots:
     /// \brief slot_show отвечает за отображение слота
     /// \param QString log - логин

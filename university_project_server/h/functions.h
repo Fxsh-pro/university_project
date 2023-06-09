@@ -12,7 +12,7 @@
 /// \param QString login - логин пользователя, QString password - пароль
 /// \return QByteArray response - сообщение-ответ сервера
 ///
-QByteArray log_in(QString login, QString password);
+QByteArray log_in(QString login, QString password, QTcpSocket * cTcpSocket);
 
 
 /// \brief log_out отвечавет за выход из систему
