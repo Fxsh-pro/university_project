@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QDialog>
+#include <QResource>
+#include <QCoreApplication>
 #include "change_pass_form.h"
 
 namespace Ui {

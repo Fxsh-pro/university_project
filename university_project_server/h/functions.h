@@ -6,6 +6,7 @@
 #include <QMap>
 #include <QStringList>
 #include "h/md5.h"
+#include "qtcpsocket.h"
 
 /// \brief log_in отвечавет за вход в систему
 /// \param QString login - логин пользователя, QString password - пароль
@@ -61,6 +62,9 @@ QByteArray invalidRequest();
 /// \param QString message - сообщение для парсинга
 /// \return QByteArray response - сообщение-ответ сервера
 ///
-QByteArray parse(QString message);
+QByteArray parse(QString message, QTcpSocket* cTcpSocket);
+
+QByteArray set_public_keys(QByteArray keys, QTcpSocket* cTcpSocket);
+
 #endif // FUNCTIONS_H
 

@@ -1,10 +1,14 @@
 #include "h/singletonClient.h"
+#include "h/rsa.h"
+#include "h/bigprimegenerator.h"
 
 SingletonClient::SingletonClient(QObject *parent) : QObject(parent){
     mTcpSocket = new QTcpSocket(this);
     mTcpSocket -> connectToHost("127.0.0.1",33333);
     connect(mTcpSocket, &QTcpSocket::readyRead,
             this, &SingletonClient::slotServerRead);
+    RSA rsa(BigPrimeGenerator::getBigPrime(), BigPrimeGenerator::getBigPrime());
+    send_msg_to_server("set_public_keys " + rsa.getPubKeys() + "\n");
 
 }
 SingletonClient* SingletonClient::getInstance(){
@@ -17,6 +21,7 @@ SingletonClient* SingletonClient::getInstance(){
 }
 
 void SingletonClient::send_msg_to_server(QString query){
+    qDebug() << query;
     mTcpSocket->write(query.toUtf8());
 }
 

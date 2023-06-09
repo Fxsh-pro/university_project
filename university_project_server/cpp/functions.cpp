@@ -1,5 +1,6 @@
 #include "h/functions.h"
 #include "h/SingletonDataBase.h"
+#include "h/mytcpserver.h"
 
 QByteArray log_in(QString login, QString password){
     MD5 hash;
@@ -48,9 +49,12 @@ QByteArray invalidRequest(){
 };
 
 
-QByteArray parse(QString message){
+QByteArray parse(QString message, QTcpSocket* cTcpSocket){
     // QStringList parts = message.left(message.length() - 2).split(" ");
     QStringList parts = message.left(message.length()-1).split(" ");
+
+    qDebug() << message;
+
     switch(parts.size()){
         case 1:
             if(parts[0] == "log_out")
@@ -65,10 +69,17 @@ QByteArray parse(QString message){
                 return change_role(parts[1],parts[2]);
             if (parts[0] == "change_pass")
                 return change_pass(parts[1],parts[2]);
+            if (parts[0] == "set_public_keys")
+                return set_public_keys(parts[1].toUtf8() + " " + parts[2].toUtf8(), cTcpSocket);
             break;
         case 4:
             if (parts[0] == "add_user")
                 return add_user(parts[1],parts[2], parts[3].toInt());
     }
     return invalidRequest();
+}
+
+QByteArray set_public_keys(QByteArray keys, QTcpSocket* cTcpSocket) {
+    MyTcpServer::setKeys(keys, cTcpSocket);
+    return "Ключи: " + MyTcpServer::getKeys(cTcpSocket);
 }

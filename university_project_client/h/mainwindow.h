@@ -3,9 +3,12 @@
 
 #include <QMainWindow>
 #include "h/authform.h"
+#include "qjsonobject.h"
 #include <h/aboutuserform.h>
 #include <QListWidget>
 #include <QMessageBox>
+#include <QResource>
+#include <QTimer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

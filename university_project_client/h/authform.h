@@ -3,9 +3,8 @@
 
 #include <QDialog>
 #include <QDebug>
-#include "h/singletonClient.h"
+#include <QResource>
 #include <QKeyEvent>
-
 
 
 namespace Ui {

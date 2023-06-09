@@ -1,7 +1,6 @@
+#include <QFontDatabase>
 #include "h/aboutuserform.h"
 #include "ui_aboutuserform.h"
-#include "h/authform.h"
-#include "h/mainwindow.h"
 
 AboutUserForm::AboutUserForm(QDialog *parent) :
     QDialog(parent),

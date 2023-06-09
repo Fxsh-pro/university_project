@@ -7,7 +7,7 @@
 #include <QRegularExpression>
 #include <QMessageBox>
 #include <QString>
-#include "h/singletonClient.h"
+#include <QResource>
 
 namespace Ui {
 class change_pass_form;

@@ -6,6 +6,7 @@
 #include <vector>
 #include <random>
 #include <bitset>
+#include <QRandomGenerator>
 
 class BigPrimeGenerator
 {
@@ -28,8 +29,7 @@ private:
     ///
     static uint64_t powMod(uint64_t a, uint64_t b, uint64_t n);
 
-    // Вектор первых простых чисел, для нахождения кандидатов на простоту
-    static std::vector<int> first_primes;
+
 
     // идем через все 64 бита и устанавливаем случайно значение 0 или 1
     // первый и последний бит устанавливаем значение равным 1, чтобы получить просто большое число
@@ -59,12 +59,16 @@ private:
     ///
     static bool MillerRabinTest(uint64_t to_test);
 public:
+
+    // Вектор первых простых чисел, для нахождения кандидатов на простоту
+    static std::vector<int> first_primes;
+
     // Получаем большое простое число
     /// \brief getBigPrime отвечает за генерацию простого числа
     /// \param void
     /// \return uint64_t
     ///
-    static uint64_t getBigPrime();
+    static long long int getBigPrime();
 };
 
 #endif // BIGPRIMEGENERATOR_H

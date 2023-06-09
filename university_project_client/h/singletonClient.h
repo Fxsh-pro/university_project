@@ -1,5 +1,6 @@
 #ifndef SINGLETONCLIENT_H
 #define SINGLETONCLIENT_H
+
 #include<QDebug>
 #include<QObject>
 #include<QtNetwork>
@@ -14,7 +15,7 @@ class SingletonDestroyer
     private:
         SingletonClient * p_instance;
     public:
-        ~SingletonDestroyer() { delete p_instance; }
+        ~SingletonDestroyer() {delete p_instance;}
         /// \brief initialize
         /// \param
         /// \return

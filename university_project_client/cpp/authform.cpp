@@ -1,5 +1,7 @@
+#include <QFontDatabase>
 #include "h/authform.h"
 #include "ui_authform.h"
+#include <h/singletonClient.h>
 
 AuthForm::AuthForm(QWidget *parent) :
     QDialog(parent),

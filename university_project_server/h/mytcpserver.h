@@ -1,12 +1,10 @@
 #ifndef MYTCPSERVER_H
 #define MYTCPSERVER_H
+
 #include <QObject>
 #include <QTcpServer>
 #include <QTcpSocket>
-
-#include <QtNetwork>
-#include <QByteArray>
-#include <QDebug>
+#include <QHash>
 
 class MyTcpServer : public QObject
 {
@@ -14,35 +12,19 @@ class MyTcpServer : public QObject
 public:
     explicit MyTcpServer(QObject *parent = nullptr);
     ~MyTcpServer();
+
 public slots:
-    /// \brief slotNewConnection отвечает за подключение клиента к серверу
-    /// \param void
-    /// \return void
-    ///
     void slotNewConnection();
-
-    /// \brief slotClientDisconnected отвечает за отключение клиента от сервера
-    /// \param void
-    /// \return void
-    ///
     void slotClientDisconnected();
-
-    /// \brief slotServerRead отвечает за отслеживание информации от клиента
-    /// \param void
-    /// \return void
-    ///
     void slotServerRead();
-//    void slotReadClient();
+
+    static void setKeys(QByteArray keys, QTcpSocket* cTcpSocket);
+    static QByteArray getKeys(QTcpSocket* cTcpSocket);
+
 private:
-    QTcpServer * mTcpServer;
-    QVector<QTcpSocket*> mTcpSocket;
+    QTcpServer* mTcpServer;
+    static QHash<QTcpSocket*, QByteArray> mTcpSocket;
     int server_status;
 };
+
 #endif // MYTCPSERVER_H
-
-
-
-
-
-
-

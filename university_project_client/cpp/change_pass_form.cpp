@@ -1,5 +1,7 @@
+#include <QFontDatabase>
 #include "h/change_pass_form.h"
 #include "ui_change_pass_form.h"
+#include <h/singletonClient.h>
 
 change_pass_form::change_pass_form(QWidget *parent) :
     QDialog(parent),
@@ -11,7 +13,6 @@ change_pass_form::change_pass_form(QWidget *parent) :
     ui->setupUi(this);
     ui->change_pass_2_lineEdit->setEchoMode(QLineEdit::Password);
     ui->change_pass_lineEdit->setEchoMode(QLineEdit::Password);
-
 
     connect(SingletonClient::getInstance(), &SingletonClient::change_pass_ok,
             this, &change_pass_form::slot_on_change_pass_ok);
