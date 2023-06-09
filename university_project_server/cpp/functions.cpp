@@ -4,40 +4,37 @@
 
 QByteArray log_in(QString login, QString password){
     MD5 hash;
-//    qDebug()<<password;
-//    qDebug()<<QString::fromStdString(hash->get_hash(password.toStdString()))<<"_-_";
-//    qDebug()<<QString::fromStdString(hash->get_hash(password.toStdString()));
 
     bool ok = SingletonDataBase::log_in(login,QString::fromStdString(hash.get_hash(password.toStdString())));
     if (ok) {
         QJsonDocument data(SingletonDataBase::send_user_data(login));
         QString result_data = data.toJson();
-        return QByteArray("auth+&" + result_data.toUtf8()+"\r\n");
+        return QByteArray("auth+#" + result_data.toUtf8());
     }
 
-    return QByteArray("auth-\r\n");
+    return QByteArray("auth-");
 }
 
 QByteArray log_out(){
-    return QByteArray("Выход...\r\n");
+    return QByteArray("Выход...");
 }
 
 QByteArray change_role(QString username, QString new_role){
     SingletonDataBase::change_role(username,new_role);
-    return QByteArray("Роль успешно изменена\r\n");
+    return QByteArray("Роль успешно изменена");
 }
 
 QByteArray change_pass(QString login, QString new_pass){
     MD5 hash;
     QString new_pass_hash = QString::fromStdString(hash.get_hash(new_pass.toStdString()));
     SingletonDataBase::changePassword(login, new_pass_hash);
-    return QByteArray("change_pass+\r\n");
+    return QByteArray("change_pass+");
 
 }
 
 QByteArray add_user(QString username, QString pass, int new_role){
     SingletonDataBase::insertUser(username, pass, new_role);
-    return QByteArray("Пользователь добавлен\r\n");
+    return QByteArray("Пользователь добавлен");
 }
 
 QByteArray show_pass(QString login,int access_level){
@@ -45,13 +42,12 @@ QByteArray show_pass(QString login,int access_level){
     return response.toUtf8();
 }
 QByteArray invalidRequest(){
-    return QByteArray("Неверная команда или неверное количесво параметров.\r\n");
+    return QByteArray("Неверная команда или неверное количесво параметров");
 };
 
 
 QByteArray parse(QString message, QTcpSocket* cTcpSocket){
-    // QStringList parts = message.left(message.length() - 2).split(" ");
-    QStringList parts = message.left(message.length()-1).split(" ");
+    QStringList parts = message.split("#");
 
     qDebug() << message;
 
@@ -69,8 +65,8 @@ QByteArray parse(QString message, QTcpSocket* cTcpSocket){
                 return change_role(parts[1],parts[2]);
             if (parts[0] == "change_pass")
                 return change_pass(parts[1],parts[2]);
-            if (parts[0] == "set_public_keys")
-                return set_public_keys(parts[1].toUtf8() + " " + parts[2].toUtf8(), cTcpSocket);
+            if (parts[0] == "send_to_server_public_keys")
+                return set_client_public_keys(parts[1].toUtf8() + "#" + parts[2].toUtf8(), cTcpSocket);
             break;
         case 4:
             if (parts[0] == "add_user")
@@ -79,7 +75,7 @@ QByteArray parse(QString message, QTcpSocket* cTcpSocket){
     return invalidRequest();
 }
 
-QByteArray set_public_keys(QByteArray keys, QTcpSocket* cTcpSocket) {
+QByteArray set_client_public_keys(QByteArray keys, QTcpSocket* cTcpSocket) {
     MyTcpServer::setKeys(keys, cTcpSocket);
-    return "Ключи: " + MyTcpServer::getKeys(cTcpSocket);
+    return "Ключи клиента: " + MyTcpServer::getKeys(cTcpSocket);
 }

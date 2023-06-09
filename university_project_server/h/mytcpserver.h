@@ -5,6 +5,8 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QHash>
+#include "h/rsa.h"
+
 
 class MyTcpServer : public QObject
 {
@@ -25,6 +27,7 @@ private:
     QTcpServer* mTcpServer;
     static QHash<QTcpSocket*, QByteArray> mTcpSocket;
     int server_status;
+    RSA rsa;
 };
 
 #endif // MYTCPSERVER_H

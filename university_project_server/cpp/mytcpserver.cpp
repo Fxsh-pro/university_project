@@ -1,10 +1,13 @@
 #include "h/mytcpserver.h"
 #include "h/functions.h"
+#include "h/rsa.h"
+#include "h/bigprimegenerator.h"
 
 QHash<QTcpSocket*, QByteArray> MyTcpServer::mTcpSocket;
 
 MyTcpServer::MyTcpServer(QObject *parent) : QObject(parent)
 {
+    RSA rsa();
     mTcpServer = new QTcpServer(this);
     connect(mTcpServer, &QTcpServer::newConnection, this, &MyTcpServer::slotNewConnection);
 
@@ -30,8 +33,7 @@ void MyTcpServer::slotNewConnection()
 {
     if (server_status == 1) {
         QTcpSocket* cTcpSocket = mTcpServer->nextPendingConnection();
-        cTcpSocket->write("Hello, World!!! I am echo server!\r\n");
-
+        cTcpSocket->write("send_to_client_public_keys#" + this->rsa.getPubKeys());
         setKeys("", cTcpSocket);
 
         connect(cTcpSocket, &QTcpSocket::readyRead, this, &MyTcpServer::slotServerRead);
@@ -51,9 +53,7 @@ void MyTcpServer::slotServerRead()
         array.append(cTcpSocket->readAll());
     }
 
-    if (array.right(1) == "\n") {
-        cTcpSocket->write(parse(array, cTcpSocket));
-    }
+    cTcpSocket->write(parse(array, cTcpSocket));
 }
 
 void MyTcpServer::slotClientDisconnected()
@@ -69,7 +69,6 @@ void MyTcpServer::slotClientDisconnected()
 void MyTcpServer::setKeys(QByteArray keys, QTcpSocket* cTcpSocket)
 {
     mTcpSocket.insert(cTcpSocket, keys);
-    qDebug() << mTcpSocket.value(cTcpSocket);
 }
 
 QByteArray MyTcpServer::getKeys(QTcpSocket* cTcpSocket)

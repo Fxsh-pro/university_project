@@ -8,6 +8,9 @@
 #include<QByteArray>
 #include<QString>
 
+#include "h/rsa.h"
+
+
 class SingletonClient;
 
 class SingletonDestroyer
@@ -29,10 +32,11 @@ class SingletonClient : public QObject
     Q_OBJECT
     private:
 //      int access_level = 0;
-
+        RSA rsa;
         static SingletonClient * p_instance;
         static SingletonDestroyer destroyer;
         QTcpSocket * mTcpSocket;
+        QVector<long int> server_public_keys;
     protected:
         explicit SingletonClient(QObject *parent = nullptr);
         SingletonClient(const SingletonClient& ) = delete;

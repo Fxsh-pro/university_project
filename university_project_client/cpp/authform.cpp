@@ -36,19 +36,16 @@ void AuthForm::on_pushButton_change_clicked()
 
 void AuthForm::on_pushButton_reg_clicked()
 {
-    qDebug() << "req" << ui->lineEdit_login->text()<<" "<< ui->lineEdit_pass->text()<<" " <<ui->lineEdit_mail->text();
+    qDebug() << "req" << ui->lineEdit_login->text()<<"#"<< ui->lineEdit_pass->text()<< "#" <<ui->lineEdit_mail->text();
     this->on_pushButton_auth_clicked();
 }
 
 
 void AuthForm::on_pushButton_auth_clicked()
 {
-    SingletonClient::getInstance()->send_msg_to_server("log_in "+ui->lineEdit_login->text()+
-                                                       " "+ ui->lineEdit_pass->text()+"\n");
-    qDebug() << "log_in " + ui->lineEdit_login->text()+" "+ ui->lineEdit_pass->text();
+    SingletonClient::getInstance()->send_msg_to_server("log_in#" +ui->lineEdit_login->text()+ "#" + ui->lineEdit_pass->text());
+    qDebug() << "log_in#" + ui->lineEdit_login->text()+"#"+ ui->lineEdit_pass->text();
     ui->lineEdit_pass->clear();
-    //emit closed(ui->lineEdit_login->text());
-    //this->close();
 }
 
 void AuthForm::keyPressEvent(QKeyEvent *event)

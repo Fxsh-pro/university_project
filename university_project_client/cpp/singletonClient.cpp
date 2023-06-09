@@ -1,5 +1,4 @@
 #include "h/singletonClient.h"
-#include "h/rsa.h"
 #include "h/bigprimegenerator.h"
 
 SingletonClient::SingletonClient(QObject *parent) : QObject(parent){
@@ -7,8 +6,7 @@ SingletonClient::SingletonClient(QObject *parent) : QObject(parent){
     mTcpSocket -> connectToHost("127.0.0.1",33333);
     connect(mTcpSocket, &QTcpSocket::readyRead,
             this, &SingletonClient::slotServerRead);
-    RSA rsa(BigPrimeGenerator::getBigPrime(), BigPrimeGenerator::getBigPrime());
-    send_msg_to_server("set_public_keys " + rsa.getPubKeys() + "\n");
+    send_msg_to_server("send_to_server_public_keys#" + rsa.getPubKeys());
 
 }
 SingletonClient* SingletonClient::getInstance(){
@@ -21,12 +19,10 @@ SingletonClient* SingletonClient::getInstance(){
 }
 
 void SingletonClient::send_msg_to_server(QString query){
-    qDebug() << query;
     mTcpSocket->write(query.toUtf8());
 }
 
 void SingletonClient::slotServerRead(){
-    qDebug()<<"slot";
     QString msg = "";
     while(mTcpSocket->bytesAvailable()>0)
     {
@@ -35,25 +31,27 @@ void SingletonClient::slotServerRead(){
             break;
     }
     qDebug()<<msg;
-    QStringList answer = msg.split("&");
-    //emit message_from_server(msg);
+    QStringList answer = msg.split("#");
+
     if(answer[0] == "auth+")
         emit auth_ok(answer[1]);
-    else if (answer[0] == "auth-\r\n")
+    else if (answer[0] == "auth-")
     {
         emit auth_invalid();
     }
-    else if (answer[0] == "change_pass+\r\n")
+    else if (answer[0] == "change_pass+")
     {
         emit change_pass_ok();
+    }
+    else if (answer[0] == "send_to_client_public_keys")
+    {
+        qDebug() << "Ключи сервера: " + answer[1] + "#" + answer[2];
     }
 }
 
 SingletonClient::~SingletonClient(){
     mTcpSocket->close();
 };
-
-
 
 SingletonClient* SingletonClient::p_instance;
 SingletonDestroyer SingletonClient::destroyer;

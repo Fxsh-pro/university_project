@@ -66,7 +66,7 @@ void change_pass_form::on_confirm_pushbutton_clicked()
         QRegularExpressionMatch pass_match = pass_pattern.match(ui->change_pass_lineEdit->text());
         if (pass_match.hasMatch())
         {
-            SingletonClient::getInstance()->send_msg_to_server("change_pass " + user_login + " " + ui->change_pass_lineEdit->text() + "\n");
+            SingletonClient::getInstance()->send_msg_to_server("change_pass#" + user_login + "#" + ui->change_pass_lineEdit->text());
         }
         else QMessageBox::warning(nullptr, "Ошибка", "Пароль недостаточно надежный!");
 
@@ -88,7 +88,7 @@ void change_pass_form::on_cancel_pushbutton_clicked()
 
 void change_pass_form::on_pushButton_clicked()
 {
-    // ДЛЯ ТУПЫХ КЛИМОВ, ЭТО НЕ ТРОГАТЬ
+    // ДЛЯ ТУПЫХ ВАНЕВ, ЭТО НЕ ТРОГАТЬ
 }
 
 

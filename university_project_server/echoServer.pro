@@ -19,10 +19,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     cpp/SingletonDataBase.cpp \
+    cpp/bigprimegenerator.cpp \
     cpp/functions.cpp \
     cpp/main.cpp \
     cpp/md5.cpp \
-    cpp/mytcpserver.cpp
+    cpp/mytcpserver.cpp \
+    cpp/rsa.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -31,6 +33,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     h/SingletonDataBase.h \
+    h/bigprimegenerator.h \
     h/functions.h \
     h/md5.h \
-    h/mytcpserver.h
+    h/mytcpserver.h \
+    h/rsa.h

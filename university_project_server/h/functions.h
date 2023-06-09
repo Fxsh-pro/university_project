@@ -64,7 +64,7 @@ QByteArray invalidRequest();
 ///
 QByteArray parse(QString message, QTcpSocket* cTcpSocket);
 
-QByteArray set_public_keys(QByteArray keys, QTcpSocket* cTcpSocket);
+QByteArray set_client_public_keys(QByteArray keys, QTcpSocket* cTcpSocket);
 
 #endif // FUNCTIONS_H
 

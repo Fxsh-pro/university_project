@@ -26,14 +26,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
             ui_user_info, &AboutUserForm::set_user_data_info);
 
    // connect(ui_auth, &AuthForm::closed, this, &MainWindow::slot_show);
-    connect(SingletonClient::getInstance(),
-            &SingletonClient::auth_ok,
-            this,
-            &MainWindow::slot_on_auth_ok);
-    connect(SingletonClient::getInstance(),
-            &SingletonClient::auth_invalid,
-            this,
-            &MainWindow::slot_on_auth_invalid);
+    connect(SingletonClient::getInstance(), &SingletonClient::auth_ok,
+            this, &MainWindow::slot_on_auth_ok);
+    connect(SingletonClient::getInstance(), &SingletonClient::auth_invalid,
+            this,&MainWindow::slot_on_auth_invalid);
 
     connect(this, &MainWindow::open_user_info,
             ui_user_info, &AboutUserForm::show);

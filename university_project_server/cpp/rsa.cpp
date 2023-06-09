@@ -2,7 +2,7 @@
 #include "h/bigprimegenerator.h"
 
 RSA::RSA() {
-    unsigned long long int p = BigPrimeGenerator::getBigPrime(), q = BigPrimeGenerator::getBigPrime();
+    long long int p = BigPrimeGenerator::getBigPrime(), q = BigPrimeGenerator::getBigPrime();
 
 
     memset(encryptedText, 0, sizeof(encryptedText));
