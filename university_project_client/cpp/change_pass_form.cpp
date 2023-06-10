@@ -66,7 +66,15 @@ void change_pass_form::on_confirm_pushbutton_clicked()
         QRegularExpressionMatch pass_match = pass_pattern.match(ui->change_pass_lineEdit->text());
         if (pass_match.hasMatch())
         {
-            SingletonClient::getInstance()->send_msg_to_server("change_pass#" + user_login + "#" + ui->change_pass_lineEdit->text());
+            QString message = "change_pass#" +
+                    RSA::encrypt(user_login,
+                                    SingletonClient::getInstance()->server_public_keys[0].toLong(),
+                                    SingletonClient::getInstance()->server_public_keys[1].toLong()) + "#" +
+                    RSA::encrypt(ui->change_pass_lineEdit->text(),
+                                                SingletonClient::getInstance()->server_public_keys[0].toLong(),
+                                                SingletonClient::getInstance()->server_public_keys[1].toLong());
+
+            SingletonClient::getInstance()->send_msg_to_server(message);
         }
         else QMessageBox::warning(nullptr, "Ошибка", "Пароль недостаточно надежный!");
 

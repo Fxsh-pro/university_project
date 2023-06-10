@@ -214,8 +214,6 @@ QJsonObject SingletonDataBase::send_user_data(QString login, QTcpSocket * cTcpSo
         service["login"] = query.value(1).toString();
         service["password"] = RSA::encrypt(query.value(2).toString(), keys[0].toLong(), keys[1].toLong());
 
-        qDebug() << service["password"];
-
         Services.append(service);
     }
     user_data["Services"] = Services;

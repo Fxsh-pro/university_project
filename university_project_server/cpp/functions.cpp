@@ -9,7 +9,10 @@ QByteArray log_in(QString login, QString password, QTcpSocket * cTcpSocket){
     if (ok) {
         QJsonDocument data(SingletonDataBase::send_user_data(login, cTcpSocket));
         QString result_data = data.toJson();
-        return QByteArray("auth+#" + result_data.toUtf8());
+
+        QList<QByteArray> keys = MyTcpServer::getClientKeys(cTcpSocket).split('#');
+
+        return QByteArray("auth+#" + RSA::encrypt(result_data.toUtf8(), keys[0].toLong(), keys[1].toLong()).toUtf8());
     }
 
     return QByteArray("auth-");
@@ -47,7 +50,14 @@ QByteArray invalidRequest(){
 
 
 QByteArray parse(QString message, QTcpSocket* cTcpSocket){
+    QList<QByteArray> keys = MyTcpServer::getServerPrKeys().split('#');
+
     QStringList parts = message.split("#");
+
+    if (parts[0] != "send_to_server_public_keys")
+        for (int i = 1; i < parts.size(); i++) {
+            parts[i] = RSA::decrypt(parts[i], keys[0].toLong(), keys[1].toLong());
+        }
 
     qDebug() << message;
 

@@ -21,7 +21,7 @@ public:
     static long int greatestCommonDivisor(long int, long int);
     static long int calculateD(long int, long int);
     static QString encrypt(const QString& message, long int e, long int n);
-    static QString decrypt(const QString& encryptedMessage, long int d, long int n);
+    static QString decrypt(const QString& message, long int d, long int n);
 };
 
 

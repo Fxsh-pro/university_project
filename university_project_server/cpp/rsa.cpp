@@ -69,34 +69,34 @@ long int RSA::calculateD(long int e, long int t){
 
 }
 
-QString RSA::decrypt(const QString& encryptedMessage, long int d, long int n)
+QString RSA::decrypt(const QString& message, long int d, long int n)
 {
     QString decryptedText = "";
     QString encryptedValue = "";
 
-    for (long int i = 0; i < encryptedMessage.length(); i++)
-    {
-        if (encryptedMessage[i] == ' ')
+        for (long int i = 0; i < message.length(); i++)
         {
-            long int encryptedNum = std::stoi(encryptedValue.toStdString());
-            long int current = encryptedNum;
-            long int result = 1;
-
-            for (long int j = 0; j < d; j++)
+            if (message[i] == ' ')
             {
-                result = (result * current) % n;
+                long int encryptedNum = encryptedValue.toInt();
+                long int current = encryptedNum;
+                long int result = 1;
+
+                for (long int j = 0; j < d; j++)
+                {
+                    result = (result * current) % n;
+                }
+
+                decryptedText += (char)(result + 97);
+                encryptedValue = "";
             }
-
-            decryptedText += QString::number(result + 97);
-            encryptedValue = "";
+            else
+            {
+                encryptedValue += message[i];
+            }
         }
-        else
-        {
-            encryptedValue += encryptedMessage[i];
-        }
-    }
 
-    return decryptedText;
+        return decryptedText;
 }
 
 QString RSA::encrypt(const QString& message, long int e, long int n)

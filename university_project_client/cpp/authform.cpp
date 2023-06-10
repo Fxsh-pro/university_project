@@ -36,15 +36,22 @@ void AuthForm::on_pushButton_change_clicked()
 
 void AuthForm::on_pushButton_reg_clicked()
 {
-    qDebug() << "req" << ui->lineEdit_login->text()<<"#"<< ui->lineEdit_pass->text()<< "#" <<ui->lineEdit_mail->text();
+    qDebug() << "req#" << ui->lineEdit_login->text()<<"#"<< ui->lineEdit_pass->text()<< "#" <<ui->lineEdit_mail->text();
     this->on_pushButton_auth_clicked();
 }
 
 
 void AuthForm::on_pushButton_auth_clicked()
 {
-    SingletonClient::getInstance()->send_msg_to_server("log_in#" +ui->lineEdit_login->text()+ "#" + ui->lineEdit_pass->text());
-    qDebug() << "log_in#" + ui->lineEdit_login->text()+"#"+ ui->lineEdit_pass->text();
+    QString message = "log_in#" +
+            RSA::encrypt(ui->lineEdit_login->text() ,
+                            SingletonClient::getInstance()->server_public_keys[0].toLong(),
+                            SingletonClient::getInstance()->server_public_keys[1].toLong()) + "#" +
+            RSA::encrypt(ui->lineEdit_pass->text(),
+                            SingletonClient::getInstance()->server_public_keys[0].toLong(),
+                            SingletonClient::getInstance()->server_public_keys[1].toLong());
+    SingletonClient::getInstance()->send_msg_to_server(message);
+    qDebug() << message;
     ui->lineEdit_pass->clear();
 }
 

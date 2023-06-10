@@ -35,11 +35,6 @@ SingletonClient::SingletonClient(QObject *parent) : QObject(parent){
     connect(mTcpSocket, &QTcpSocket::readyRead,
             this, &SingletonClient::slotServerRead);
     send_msg_to_server("send_to_server_public_keys#" + SingletonClient::getClientPubKeys());
-
-    QList<QByteArray> keys1 = SingletonClient::getClientPubKeys().split('#');
-    QList<QByteArray> keys2 = SingletonClient::getClientPrKeys().split('#');
-
-    qDebug() << RSA::decrypt(RSA::encrypt("jhavdjAVDSAFV", keys1[0].toLong(), keys1[1].toLong()), keys2[0].toLong(), keys2[1].toLong());
 }
 
 SingletonClient* SingletonClient::getInstance(){
@@ -57,14 +52,24 @@ void SingletonClient::send_msg_to_server(QString query){
 
 void SingletonClient::slotServerRead(){
     QString msg = "";
+
     while(mTcpSocket->bytesAvailable()>0)
     {
         msg.append(mTcpSocket->readAll());
         if(msg.right(1) == "\n")
             break;
     }
-    qDebug()<<msg;
+
     QStringList answer = msg.split("#");
+
+    if (answer[0] != "send_to_client_public_keys"){
+        QList<QByteArray> keys = SingletonClient::getClientPrKeys().split('#');
+        for (int i = 1; i < answer.size(); i++) {
+            answer[i] = RSA::decrypt(answer[i], keys[0].toLong(), keys[1].toLong());
+        }
+    }
+
+    qDebug()<<msg;
 
     if(answer[0] == "auth+")
         emit auth_ok(answer[1]);
