@@ -5,7 +5,7 @@
 #include <QByteArray>
 #include <QMap>
 #include <QStringList>
-#include "h/md5.h"
+#include "../university_project_server/h/md5.h"
 
 QByteArray add_new_access(QString new_access);
 

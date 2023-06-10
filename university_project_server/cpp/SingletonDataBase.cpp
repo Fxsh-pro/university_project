@@ -1,4 +1,4 @@
-#include "h/SingletonDataBase.h"
+#include "../university_project_server/h/SingletonDataBase.h"
 
 
 DatabaseDestroyer::~DatabaseDestroyer(){delete p_instance;}

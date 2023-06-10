@@ -3,10 +3,10 @@
 #include <QCoreApplication>
 #include <QVariant>
 #include<QDebug>
-#include <QSqlQuery>
-#include <QSqlError>
-#include <QSqlRecord>
-#include <QSqlDatabase>
+#include <QtSql/QSqlQuery>
+#include <QtSql/QSqlError>
+#include <QtSql/QSqlRecord>
+#include <QtSql/QSqlDatabase>
 #include <QString>
 #include <QJsonObject>
 #include <QJsonArray>

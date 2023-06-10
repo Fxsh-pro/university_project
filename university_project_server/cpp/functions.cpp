@@ -1,5 +1,5 @@
-#include "h/functions.h"
-#include "h/SingletonDataBase.h"
+#include "../university_project_server/h/functions.h"
+#include "../university_project_server/h/SingletonDataBase.h"
 
 QByteArray log_in(QString login, QString password){
     MD5 hash;

@@ -1,6 +1,4 @@
-#include "h/md5.h"
-
-
+#include "../university_project_server/h/md5.h"
 
 void MD5::appendBits(std::string& data) {
     for (int i = 0; i < data.size(); i++)
