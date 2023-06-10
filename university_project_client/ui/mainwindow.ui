@@ -12,7 +12,7 @@
   </property>
   <property name="font">
    <font>
-    <family>Bahnschrift</family>
+    <family>Century Gothic</family>
    </font>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgba(253, 255, 253, 255);
-font-family: Bahnschrift;</string>
+font-family:Century Gothic;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
@@ -76,7 +76,7 @@ border-radius: 10px;</string>
             </property>
             <property name="font">
              <font>
-              <family>Bahnschrift</family>
+              <family>Century Gothic</family>
               <pointsize>14</pointsize>
              </font>
             </property>
@@ -122,7 +122,7 @@ background-color: rgba(236, 218, 204, 150);
              <widget class="QLabel" name="label_access_level">
               <property name="font">
                <font>
-                <family>Bahnschrift</family>
+                <family>Century Gothic</family>
                 <pointsize>12</pointsize>
                </font>
               </property>
@@ -138,7 +138,7 @@ background-color: rgba(236, 218, 204, 150);
              <widget class="QLabel" name="label_acces_level_val">
               <property name="font">
                <font>
-                <family>Bahnschrift</family>
+                <family>Century Gothic</family>
                 <pointsize>12</pointsize>
                </font>
               </property>
@@ -159,7 +159,7 @@ background-color: rgba(236, 218, 204, 150);
         <widget class="QLabel" name="label_program_name">
          <property name="font">
           <font>
-           <family>Bahnschrift</family>
+           <family>Century Gothic</family>
            <pointsize>20</pointsize>
           </font>
          </property>
@@ -225,7 +225,7 @@ border-radius: 10px;</string>
             </property>
             <property name="font">
              <font>
-              <family>Bahnschrift</family>
+              <family>Century Gothic</family>
               <pointsize>14</pointsize>
              </font>
             </property>
@@ -261,7 +261,7 @@ border-radius: 10px;</string>
             </property>
             <property name="font">
              <font>
-              <family>Bahnschrift</family>
+              <family>Century Gothic</family>
               <pointsize>14</pointsize>
              </font>
             </property>
@@ -343,7 +343,7 @@ border-radius: 10px;</string>
                  </property>
                  <property name="font">
                   <font>
-                   <family>Bahnschrift</family>
+                   <family>Century Gothic</family>
                    <pointsize>14</pointsize>
                   </font>
                  </property>
@@ -373,7 +373,7 @@ border-radius: 10px;</string>
                  </property>
                  <property name="font">
                   <font>
-                   <family>Bahnschrift</family>
+                   <family>Century Gothic</family>
                    <pointsize>14</pointsize>
                   </font>
                  </property>
@@ -406,7 +406,7 @@ border-radius: 10px;</string>
                  </property>
                  <property name="font">
                   <font>
-                   <family>Bahnschrift</family>
+                   <family>Century Gothic</family>
                    <pointsize>12</pointsize>
                   </font>
                  </property>
@@ -470,7 +470,7 @@ background-color: rgba(236, 218, 204, 150);
                  </property>
                  <property name="font">
                   <font>
-                   <family>Bahnschrift</family>
+                   <family>Century Gothic</family>
                    <pointsize>14</pointsize>
                   </font>
                  </property>
@@ -500,7 +500,7 @@ border-radius: 10px;</string>
                  </property>
                  <property name="font">
                   <font>
-                   <family>Bahnschrift</family>
+                   <family>Century Gothic</family>
                    <pointsize>14</pointsize>
                   </font>
                  </property>
@@ -533,7 +533,7 @@ border-radius: 10px;</string>
                  </property>
                  <property name="font">
                   <font>
-                   <family>Bahnschrift</family>
+                   <family>Century Gothic</family>
                    <pointsize>12</pointsize>
                   </font>
                  </property>
@@ -570,7 +570,7 @@ background-color: rgba(236, 218, 204, 150);
             </property>
             <property name="font">
              <font>
-              <family>Bahnschrift</family>
+              <family>Century Gothic</family>
               <pointsize>14</pointsize>
              </font>
             </property>
